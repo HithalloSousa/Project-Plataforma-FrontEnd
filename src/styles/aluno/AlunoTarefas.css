@@ -1,0 +1,124 @@
+/* AlunoTarefas.css */
+.aluno-layout-tarefa {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f4f7f6;
+    font-family: 'Arial', sans-serif;
+}
+
+.main-content-aluno-tarefa {
+    flex-grow: 1;
+    padding: 2rem;
+    margin-left: 250px; /* Ajuste conforme a largura da sidebar */
+}
+
+.h1-tarefa-aluno {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.loading, .error {
+    text-align: center;
+    padding: 20px;
+    font-size: 1.2em;
+}
+
+.tarefa-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.tarefa-card:hover {
+    transform: translateY(-5px);
+}
+
+.download-button {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.download-button:hover {
+    background-color: #0056b3;
+}
+
+.upload-section {
+    margin-top: 20px;
+}
+
+.file-input {
+    margin-top: 10px;
+}
+
+.preview-image img {
+    max-width: 100%;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.concluir-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 20px;
+}
+
+.concluir-button.pendente {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.concluir-button.concluida {
+    background-color: #6c757d;
+    color: #fff;
+    cursor: not-allowed;
+}
+
+.concluir-button.pendente:hover {
+    background-color: #218838;
+}
+
+.image-container {
+    width: 400px; /* Largura fixa */
+    height: 400px; /* Altura fixa */
+    overflow: hidden; /* Esconde partes da imagem que ultrapassam o contêiner */
+    border-radius: 5px; /* Borda arredondada */
+}
+
+.image-container img {
+    width: 100%; /* Faz a imagem ocupar 100% do contêiner */
+    height: 100%; /* Faz a imagem ocupar 100% do contêiner */
+    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .aluno-layout {
+        flex-direction: column;
+    }
+
+    .main-content-aluno {
+        margin-left: 0;
+        padding: 1rem;
+    }
+
+    .h1-tarefa-aluno {
+        font-size: 2rem;
+    }
+
+    .tarefas-container {
+        grid-template-columns: 1fr;
+    }
+}

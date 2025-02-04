@@ -1,0 +1,77 @@
+.aluno-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.main-content-aluno {
+  flex-grow: 1;
+  padding: 20px;
+  margin-left: 250px; /* Espaço para a sidebar */
+  transition: margin 0.3s ease;
+}
+
+.aulas-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.aula-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  flex: 1 1 calc(33.333% - 40px);
+  text-align: center;
+}
+
+.aula-card h2 {
+  margin-bottom: 10px;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.aula-card h3 {
+  font-size: 1.2em;
+  color: #555;
+}
+
+.aula-card p {
+  font-size: 1em;
+  color: #777;
+}
+
+.navegacao-aulas {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.navegacao-aulas button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.navegacao-aulas button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .aulas-container {
+    flex-direction: column;
+  }
+
+  .aula-card {
+    flex: 1 1 100%;
+  }
+}
