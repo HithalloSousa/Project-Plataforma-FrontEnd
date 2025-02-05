@@ -14,7 +14,7 @@ const TarefasAluno = () => {
   // Função para buscar as tarefas do aluno
   const fetchTarefas = async () => {
     try {
-      const response = await axios.get(`http://localhost:8000/api/tarefas/${id}/`, {
+      const response = await axios.get(`https://customenglish.up.railway.app/api/tarefas/${id}/`, {
         params: { aluno_id: id },
       });
 
@@ -42,7 +42,7 @@ const TarefasAluno = () => {
 
     try {
       await axios.post(
-        `http://localhost:8000/api/corrigir-tarefa/${tarefaId}/`,
+        `https://customenglish.up.railway.app/api/corrigir-tarefa/${tarefaId}/`,
         formData,
         {
           headers: {
@@ -93,7 +93,7 @@ const TarefasAluno = () => {
                           src={
                             tarefa.imagem_concluida.startsWith("http")
                             ? tarefa.imagem_concluida
-                            : `http://localhost:8000${tarefa.imagem_concluida}`
+                            : `https://customenglish.up.railway.app${tarefa.imagem_concluida}`
                           }
                           alt="Tarefa Concluida"
                           className="tarefa-imagem"
@@ -103,7 +103,7 @@ const TarefasAluno = () => {
                           }}
                         />
                         <a
-                          href={tarefa.imagem_concluida.startsWith("http") ? tarefa.imagem_concluida : `http://localhost:8000${tarefa.imagem_concluida}`}
+                          href={tarefa.imagem_concluida.startsWith("http") ? tarefa.imagem_concluida : `https://customenglish.up.railway.app${tarefa.imagem_concluida}`}
                           dowload
                           target="_blank"
                           rel="noopener noreferrer"

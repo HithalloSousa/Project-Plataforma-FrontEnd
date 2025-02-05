@@ -35,7 +35,7 @@ const FichamentoForm = () => {
     fetchNiveis();
     if (id) {
       axios
-        .get(`http://localhost:8000/api/fichamento/${id}/`)
+        .get(`https://customenglish.up.railway.app/api/fichamento/${id}/`)
         .then((response) => {
           if (response.data) {
             setFichamento(response.data);
@@ -64,11 +64,11 @@ const FichamentoForm = () => {
     try {
       if (fichamento.id) {
         await axios.put(
-          `http://localhost:8000/api/fichamento/${id}/${fichamento.id}/`,
+          `https://customenglish.up.railway.app/api/fichamento/${id}/${fichamento.id}/`,
           payload
         );
       } else {
-        await axios.post("http://localhost:8000/api/criar-fichamento/", payload);
+        await axios.post("https://customenglish.up.railway.app/api/criar-fichamento/", payload);
       }
       alert("Fichamento feito com sucesso!");
       setIsLoading(false);

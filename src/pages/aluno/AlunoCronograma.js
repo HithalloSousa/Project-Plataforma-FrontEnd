@@ -14,7 +14,7 @@ const AlunoCronograma = () => {
     // Usar useCallback para evitar recriação da função
     const fetchFichamento = useCallback(async () => {
         try {
-            const response = await axios.get(`http://localhost:8000/api/fichamento/${alunoId}/`);
+            const response = await axios.get(`https://customenglish.up.railway.app/api/fichamento/${alunoId}/`);
             setFichamento(response.data);
         } catch (error) {
             console.error("Erro ao buscar o fichamento:", error);
@@ -23,7 +23,7 @@ const AlunoCronograma = () => {
 
     const fetchAluno = useCallback(async () => {
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/api/aluno/${alunoId}/`);
+            const response = await axios.get(`https://customenglish.up.railway.app/api/aluno/${alunoId}/`);
             setAluno(response.data);
         } catch (error) {
             console.error("Erro ao buscar o aluno:", error);

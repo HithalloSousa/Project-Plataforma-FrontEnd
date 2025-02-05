@@ -12,7 +12,7 @@ const Aluno = () => {
   // Função para buscar os dados do aluno
   const fetchAluno = useCallback(async () => {
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/api/aluno/${alunoId}/`);
+      const response = await axios.get(`https://customenglish.up.railway.app/api/aluno/${alunoId}/`);
       setAluno(response.data);
     } catch (error) {
       console.error("Erro ao buscar o aluno:", error);
@@ -22,7 +22,7 @@ const Aluno = () => {
   // Função para buscar as aulas (simulação)
   const fetchAulas = useCallback(async () => {
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/api/aulas/${alunoId}/`);
+      const response = await axios.get(`https://customenglish.up.railway.app/api/aulas/${alunoId}/`);
       setAulas(response.data);
     } catch (error) {
       console.error("Erro ao buscar as aulas do aluno:", error);

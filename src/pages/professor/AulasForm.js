@@ -20,7 +20,7 @@ const AulasForm = () => {
 
     const fetchAulas = async () => {
         try {
-            const response = await axios.get(`http://localhost:8000/api/aulas/${id}`);
+            const response = await axios.get(`https://customenglish.up.railway.app/api/aulas/${id}`);
             setAulas(response.data);
         } catch (error) {
             console.error("Erro ao buscar aulas:", error);
@@ -32,7 +32,7 @@ const AulasForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:8000/api/criar-aulas/", {
+            const response = await axios.post("https://customenglish.up.railway.app/api/criar-aulas/", {
                 aluno_id: id,
                 titulo,
                 data,

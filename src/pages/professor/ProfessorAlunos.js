@@ -12,7 +12,7 @@ const ProfessorAlunos = () => {
 
   const fetchAlunos = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/alunos/");
+      const response = await axios.get("https://customenglish.up.railway.app/api/alunos/");
       setAlunos(response.data);
     } catch (error) {
       console.error("Erro ao buscar alunos:", error);
@@ -22,7 +22,7 @@ const ProfessorAlunos = () => {
   const handleCriarAluno = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:8000/api/criar-alunos/", novoAluno);
+      const response = await axios.post("https://customenglish.up.railway.app/api/criar-alunos/", novoAluno);
       console.log("Aluno criado:", response.data);
       setNovoAluno({ nome: "", email: "", senha: "" });
       fetchAlunos();
@@ -39,7 +39,7 @@ const ProfessorAlunos = () => {
 
   const handleFichamento = async (id) => {
     try {
-      const response = await axios.get(`http://localhost:8000/api/fichamento/${id}/`);
+      const response = await axios.get(`https://customenglish.up.railway.app/api/fichamento/${id}/`);
       if (response.data) {
         navigate(`/professor/aluno/fichamento/editar/${id}`);
       } else {
@@ -52,7 +52,7 @@ const ProfessorAlunos = () => {
 
   const handleTarefas = async (id) => {
     try {
-      const response = await axios.get(`http://localhost:8000/api/tarefas/${id}/`);
+      const response = await axios.get(`https://customenglish.up.railway.app/api/tarefas/${id}/`);
       if (response.data) {
         navigate(`/professor/aluno/tarefas/editar/${id}`);
       } else {
@@ -65,7 +65,7 @@ const ProfessorAlunos = () => {
 
   const handleAulas = async (id) => {
     try {
-      const response = await axios.get(`http://localhost:8000/api/aulas/${id}/`);
+      const response = await axios.get(`https://customenglish.up.railway.app/api/aulas/${id}/`);
       console.log(response.data)
       if (response.data) {
         navigate(`/professor/aluno/aulas/editar/${id}`);

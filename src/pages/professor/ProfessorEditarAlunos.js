@@ -12,7 +12,7 @@ const ProfessorEditaAluno = () => {
     useEffect(() => {
         const fetchAluno = async () => {
             try {
-                const response = await axios.get(`http://127.0.0.1:8000/api/aluno/${id}/`);
+                const response = await axios.get(`https://customenglish.up.railway.app/api/aluno/${id}/`);
                 setAluno(response.data);
             } catch (error) {
                 console.error("Erro ao buscar o aluno:", error);
@@ -31,7 +31,7 @@ const ProfessorEditaAluno = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`http://127.0.0.1:8000/api/aluno/${id}/`, aluno);
+            await axios.put(`https://customenglish.up.railway.app/api/aluno/${id}/`, aluno);
             alert("Aluno atualizado com sucesso!");
         } catch (error) {
             console.error("Erro ao atualizar aluno:", error);
@@ -42,7 +42,7 @@ const ProfessorEditaAluno = () => {
     const handleDelete = async () => {
         if (window.confirm("Tem certeza que deseja deletar este aluno?")) {
             try {
-                await axios.delete(`http://127.0.0.1:8000/api/aluno/${id}/`);
+                await axios.delete(`https://customenglish.up.railway.app/api/aluno/${id}/`);
                 alert("Aluno deletado com sucesso!");
                 navigate("/professor-alunos");
             } catch (error) {

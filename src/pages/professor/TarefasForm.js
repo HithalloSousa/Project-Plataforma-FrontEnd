@@ -12,7 +12,7 @@ const TarefaForm = () => {
 
     const fetchTarefas = async () => {
         try {
-            const response = await axios.get("http://localhost:8000/api/tarefas/");
+            const response = await axios.get("https://customenglish.up.railway.app/api/tarefas/");
             const tarefasData = response.data;
 
             // Verifica se há IDs duplicados
@@ -23,7 +23,7 @@ const TarefaForm = () => {
             }
 
             // Buscar alunos completos para cada tarefa
-            const alunosResponse = await axios.get("http://localhost:8000/api/alunos/");
+            const alunosResponse = await axios.get("https://customenglish.up.railway.app/api/alunos/");
             const alunosData = alunosResponse.data;
 
             // Verifica se há IDs duplicados
@@ -50,7 +50,7 @@ const TarefaForm = () => {
 
     const fetchAlunos = async () => {
         try {
-            const response = await axios.get("http://localhost:8000/api/alunos/");
+            const response = await axios.get("https://customenglish.up.railway.app/api/alunos/");
             setAlunos(response.data);
         } catch (error) {
             console.error("Erro ao buscar alunos:", error);

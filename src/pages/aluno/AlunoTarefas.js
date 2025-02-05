@@ -20,8 +20,8 @@ const AlunoTarefas = () => {
         const fetchData = async () => {
             try {
                 const [alunoResponse, tarefasResponse] = await Promise.all([
-                    axios.get(`http://127.0.0.1:8000/api/aluno/${alunoId}/`),
-                    axios.get(`http://localhost:8000/api/tarefas/${alunoId}/`)
+                    axios.get(`https://customenglish.up.railway.app/api/aluno/${alunoId}/`),
+                    axios.get(`https://customenglish.up.railway.app/api/tarefas/${alunoId}/`)
                 ]);
                 setAluno(alunoResponse.data);
                 setTarefas(tarefasResponse.data);
@@ -58,7 +58,7 @@ const AlunoTarefas = () => {
 
         try {
             const response = await axios.post(
-                "http://localhost:8000/api/tarefas/concluir-tarefa/",
+                "https://customenglish.up.railway.app/api/tarefas/concluir-tarefa/",
                 formData,
                 { headers: { "Content-Type": "multipart/form-data" } }
             );

@@ -19,7 +19,7 @@ const TeacherDashboard = () => {
 
   const fetchAlunos = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/alunos/");
+      const response = await axios.get("https://customenglish.up.railway.app/api/alunos/");
       setAlunos(response.data);
     } catch (error) {
       console.error("Erro ao buscar alunos:", error);
@@ -28,7 +28,7 @@ const TeacherDashboard = () => {
 
   const fetchTarefas = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/tarefas/");
+      const response = await axios.get("https://customenglish.up.railway.app/api/tarefas/");
       setTarefas(response.data);
     } catch (error) {
       console.error("Erro ao buscar tarefas:", error)

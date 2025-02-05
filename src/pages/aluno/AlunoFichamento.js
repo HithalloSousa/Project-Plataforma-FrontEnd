@@ -14,7 +14,7 @@ const AlunoFichamento = () => {
 
     const fetchFichamento = async () => {
         try {
-            const response = await axios.get(`http://localhost:8000/api/fichamento/${alunoId}/`);
+            const response = await axios.get(`https://customenglish.up.railway.app/api/fichamento/${alunoId}/`);
             setFichamento(response.data);
 
             // Busca o nome do nível com base no ID do nivel_aluno
@@ -28,7 +28,7 @@ const AlunoFichamento = () => {
 
     const fetchNivelAlunoNome = async (nivelAlunoId) => {
         try {
-            const response = await axios.get(`http://localhost:8000/api/nivels/`);
+            const response = await axios.get(`https://customenglish.up.railway.app/api/nivels/`);
             // console.log(response.data); // Lista de níveis
 
             // Encontra o nível correspondente ao ID
@@ -46,7 +46,7 @@ const AlunoFichamento = () => {
 
     const fetchAluno = async () => {
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/api/aluno/${alunoId}/`);
+            const response = await axios.get(`https://customenglish.up.railway.app/api/aluno/${alunoId}/`);
             setAluno(response.data);
         } catch (error) {
             console.error("Erro ao buscar o aluno:", error);
