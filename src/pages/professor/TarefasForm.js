@@ -68,7 +68,7 @@ const TarefaForm = () => {
         }
 
         try {
-            const response = await axios.post("http://localhost:8000/api/criar-tarefas/", formData);
+            const response = await axios.post("https://customenglish.up.railway.app/api/criar-tarefas/", formData);
             alert("Tarefa criada com sucesso!");
             setTarefas((prevTarefas) => [...prevTarefas, response.data]);
             setNovaTarefa({ titulo: "", descricao: "", arquivo: null });
@@ -80,7 +80,7 @@ const TarefaForm = () => {
 
     const handleAtribuirTarefa = async (tarefaId, alunoId) => {
         try {
-            await axios.post("http://localhost:8000/api/atribuir-tarefa/", {
+            await axios.post("https://customenglish.up.railway.app/api/atribuir-tarefa/", {
                 aluno_id: alunoId,
                 tarefa_id: tarefaId
             });
@@ -117,7 +117,7 @@ const TarefaForm = () => {
 
     const handleExcluirTarefa = async (tarefaId) => {
         try {
-            await axios.delete(`http://localhost:8000/api/deletar/tarefa/${tarefaId}/`);
+            await axios.delete(`https://customenglish.up.railway.app/api/deletar/tarefa/${tarefaId}/`);
             alert("Tarefa excluída com sucesso!");
             fetchTarefas();
         } catch (error) {
@@ -129,7 +129,7 @@ const TarefaForm = () => {
     const handleRemoverAluno = async (tarefaId, alunoId) => {
         try {
             const response = await axios.patch(
-                `http://localhost:8000/api/remover-aluno/${tarefaId}/`, { aluno_id: alunoId }
+                `https://customenglish.up.railway.app/api/remover-aluno/${tarefaId}/`, { aluno_id: alunoId }
             );
     
             alert("Aluno removido da tarefa com sucesso!");
