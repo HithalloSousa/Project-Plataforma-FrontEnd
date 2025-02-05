@@ -69,7 +69,7 @@ const TarefaForm = () => {
 
         try {
             const response = await axios.post("https://customenglish.up.railway.app/api/criar-tarefas/", formData);
-            alert("Tarefa criada com sucesso!");
+            alert("Tarefa criada com sucesso!!");
             setTarefas((prevTarefas) => [...prevTarefas, response.data]);
             setNovaTarefa({ titulo: "", descricao: "", arquivo: null });
         } catch (error) {
