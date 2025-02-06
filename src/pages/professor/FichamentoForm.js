@@ -16,7 +16,7 @@ const FichamentoForm = () => {
 
   const fetchNiveis = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/nivels/");
+      const response = await axios.get("https://customenglish.up.railway.app/api/nivels/");
       setNiveis(response.data);
     } catch (error) {
       console.error("Erro ao buscar os níveis:", error);
