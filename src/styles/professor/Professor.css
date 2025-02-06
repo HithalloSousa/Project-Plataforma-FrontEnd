@@ -140,37 +140,75 @@
 }
 
 /* Responsividade */
+/* Responsividade - Ajustes na Sidebar e Layout Principal */
+
+/* Quando a tela for menor que 768px (tablets e telas médias) */
 @media (max-width: 768px) {
+  .professor-layout {
+    flex-direction: column; /* Alinha os elementos em coluna */
+  }
+
+  .sidebar {
+    width: 60px; /* Reduz a largura da sidebar em telas menores */
+  }
+
   .main-content {
-    margin-left: 60px; /* Ajuste para a sidebar contraída */
+    margin-left: 0; /* Remove o espaço reservado para a sidebar */
+    padding: 10px;
+  }
+
+  .teacher-dashboard {
+    padding: 15px;
   }
 
   .dashboard-title {
     font-size: 2rem;
   }
 
+  .dashboard-summary {
+    gap: 15px;
+  }
+
   .summary-card {
-    min-width: 100%; /* Cards ocupam toda a largura */
+    min-width: 45%; /* Ajuste para que os cards ocupem mais espaço */
   }
 
   .quick-access-links {
     flex-direction: column;
     gap: 10px;
   }
+
+  .quick-link {
+    padding: 10px 15px;
+    font-size: 1rem;
+  }
 }
 
+/* Quando a tela for menor que 480px (smartphones) */
 @media (max-width: 480px) {
+  .professor-layout {
+    flex-direction: column; /* Empilha os elementos */
+  }
+
+  .sidebar {
+    width: 50px; /* Sidebar ainda menor em dispositivos muito pequenos */
+  }
+
   .main-content {
-    margin-left: 50px; /* Ajuste para telas muito pequenas */
+    margin-left: 0; /* Remove a margem lateral completamente */
     padding: 10px;
   }
 
   .dashboard-title {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
+  }
+
+  .summary-card {
+    min-width: 100%; /* Cards ocupam toda a largura */
   }
 
   .summary-card h2 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
 
   .summary-card p {
@@ -183,7 +221,7 @@
   }
 
   .quick-link {
-    padding: 10px 20px;
+    padding: 10px 15px;
     font-size: 0.9rem;
   }
 }
