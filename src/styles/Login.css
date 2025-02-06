@@ -113,11 +113,13 @@
 }
 
 .logo-container {
-  text-align: center; /* Centraliza a logo */
-  margin-bottom: 10px; /* Espaço abaixo da logo */
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente, se necessário */
 }
 
 .logo {
-  width: 390px; /* Ajuste o tamanho da logo conforme necessário */
+  width: 390px;
   height: auto;
+  display: inline-block; /* Garante que a imagem respeite o text-align do pai */
 }
