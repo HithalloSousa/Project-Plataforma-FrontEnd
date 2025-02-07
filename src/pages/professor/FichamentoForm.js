@@ -5,6 +5,7 @@ import Sidebar from "../../components/SideBarProfessor";
 import "../../styles/professor/Professor.css";
 import "../../styles/professor/ProfessorAluno.css"; // Estilos adicionais para o layout
 import "../../styles/professor/FichamentoForm.css"
+import API_BASE_URL from "../../config";
 
 const FichamentoForm = () => {
   const { id } = useParams(); // Pega o ID do aluno da URL
@@ -16,7 +17,8 @@ const FichamentoForm = () => {
 
   const fetchNiveis = async () => {
     try {
-      const response = await axios.get("https://customenglish.up.railway.app/api/nivels/");
+      // const response = await axios.get("https://customenglish.up.railway.app/api/nivels/");
+      const response = await axios.get(`${API_BASE_URL}/api/nivels/`);
       setNiveis(response.data);
     } catch (error) {
       console.error("Erro ao buscar os níveis:", error);
@@ -35,7 +37,7 @@ const FichamentoForm = () => {
     fetchNiveis();
     if (id) {
       axios
-        .get(`https://customenglish.up.railway.app/api/fichamento/${id}/`)
+        .get(`${API_BASE_URL}/api/fichamento/${id}/`)
         .then((response) => {
           if (response.data) {
             setFichamento(response.data);
@@ -64,11 +66,11 @@ const FichamentoForm = () => {
     try {
       if (fichamento.id) {
         await axios.put(
-          `https://customenglish.up.railway.app/api/fichamento/${id}/${fichamento.id}/`,
+          `${API_BASE_URL}/api/fichamento/${id}/${fichamento.id}/`,
           payload
         );
       } else {
-        await axios.post("https://customenglish.up.railway.app/api/criar-fichamento/", payload);
+        await axios.post(`${API_BASE_URL}/api/criar-fichamento/`, payload);
       }
       alert("Fichamento feito com sucesso!");
       setIsLoading(false);
@@ -95,13 +97,16 @@ const FichamentoForm = () => {
           {error && <p className="error-message">{error}</p>}
           <form onSubmit={handleSubmit}>
             <div>
-              <label>Nível de Inglês:</label>
+              <label htmlFor="nivel_aluno">Nível de Inglês:</label>
               {niveis.length === 0 ? (
-                <p>Carregando níveis...</p>
+                <select disabled>
+                  <option>Carregando níveis...</option>
+                </select>
               ) : (
                 <select
+                  id="nivel_aluno"
                   name="nivel_aluno"
-                  value={fichamento.nivel_aluno}
+                  value={fichamento.nivel_aluno || ""}
                   onChange={handleChange}
                   required
                 >
@@ -114,6 +119,7 @@ const FichamentoForm = () => {
                 </select>
               )}
             </div>
+
             <div>
               <label>Nível Detalhado:</label>
               <textarea

@@ -4,6 +4,7 @@ import "../../styles/aluno/Aluno.css";
 import { useParams } from "react-router-dom";
 import SidebarAluno from "../../components/SideBarAluno";
 import "../../styles/aluno/AlunoFichamento.css";
+import API_BASE_URL from "../../config";
 
 const AlunoFichamento = () => {
     const { id } = useParams();
@@ -14,7 +15,7 @@ const AlunoFichamento = () => {
 
     const fetchFichamento = async () => {
         try {
-            const response = await axios.get(`https://customenglish.up.railway.app/api/fichamento/${alunoId}/`);
+            const response = await axios.get(`${API_BASE_URL}/api/fichamento/${alunoId}/`);
             setFichamento(response.data);
 
             // Busca o nome do nível com base no ID do nivel_aluno
@@ -28,7 +29,7 @@ const AlunoFichamento = () => {
 
     const fetchNivelAlunoNome = async (nivelAlunoId) => {
         try {
-            const response = await axios.get(`https://customenglish.up.railway.app/api/nivels/`);
+            const response = await axios.get(`${API_BASE_URL}/api/nivels/`);
             // console.log(response.data); // Lista de níveis
 
             // Encontra o nível correspondente ao ID
@@ -46,7 +47,7 @@ const AlunoFichamento = () => {
 
     const fetchAluno = async () => {
         try {
-            const response = await axios.get(`https://customenglish.up.railway.app/api/aluno/${alunoId}/`);
+            const response = await axios.get(`${API_BASE_URL}/api/aluno/${alunoId}/`);
             setAluno(response.data);
         } catch (error) {
             console.error("Erro ao buscar o aluno:", error);

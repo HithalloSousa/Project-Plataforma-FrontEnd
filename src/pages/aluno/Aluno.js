@@ -2,17 +2,19 @@ import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios"; // Importe o axios
 import "../../styles/aluno/Aluno.css";
 import SidebarAluno from "../../components/SideBarAluno";
+import API_BASE_URL from "../../config";
 
 const Aluno = () => {
   const alunoId = localStorage.getItem("user_id");
   const [aluno, setAluno] = useState({});
   const [aulas, setAulas] = useState([]);
   const [aulaAtualIndex, setAulaAtualIndex] = useState(0);
+  
 
   // Função para buscar os dados do aluno
   const fetchAluno = useCallback(async () => {
     try {
-      const response = await axios.get(`https://customenglish.up.railway.app/api/aluno/${alunoId}/`);
+      const response = await axios.get(`${API_BASE_URL}/api/aluno/${alunoId}/`);
       setAluno(response.data);
     } catch (error) {
       console.error("Erro ao buscar o aluno:", error);
@@ -22,7 +24,7 @@ const Aluno = () => {
   // Função para buscar as aulas (simulação)
   const fetchAulas = useCallback(async () => {
     try {
-      const response = await axios.get(`https://customenglish.up.railway.app/api/aulas/${alunoId}/`);
+      const response = await axios.get(`${API_BASE_URL}/api/aulas/${alunoId}/`);
       setAulas(response.data);
     } catch (error) {
       console.error("Erro ao buscar as aulas do aluno:", error);

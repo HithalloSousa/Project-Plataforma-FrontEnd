@@ -3,6 +3,7 @@ import Sidebar from "../../components/SideBarProfessor";
 import "../../styles/professor/ProfessorEditaAluno.css";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import API_BASE_URL from "../../config";
 
 const ProfessorEditaAluno = () => {
     const { id } = useParams(); // Pega o ID do aluno da URL
@@ -12,7 +13,7 @@ const ProfessorEditaAluno = () => {
     useEffect(() => {
         const fetchAluno = async () => {
             try {
-                const response = await axios.get(`https://customenglish.up.railway.app/api/aluno/${id}/`);
+                const response = await axios.get(`${API_BASE_URL}/api/aluno/${id}/`);
                 setAluno(response.data);
             } catch (error) {
                 console.error("Erro ao buscar o aluno:", error);
@@ -31,7 +32,7 @@ const ProfessorEditaAluno = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`https://customenglish.up.railway.app/api/aluno/${id}/`, aluno);
+            await axios.put(`${API_BASE_URL}/api/aluno/${id}/`, aluno);
             alert("Aluno atualizado com sucesso!");
         } catch (error) {
             console.error("Erro ao atualizar aluno:", error);
@@ -42,7 +43,7 @@ const ProfessorEditaAluno = () => {
     const handleDelete = async () => {
         if (window.confirm("Tem certeza que deseja deletar este aluno?")) {
             try {
-                await axios.delete(`https://customenglish.up.railway.app/api/aluno/${id}/`);
+                await axios.delete(`${API_BASE_URL}/api/aluno/${id}/`);
                 alert("Aluno deletado com sucesso!");
                 navigate("/professor-alunos");
             } catch (error) {

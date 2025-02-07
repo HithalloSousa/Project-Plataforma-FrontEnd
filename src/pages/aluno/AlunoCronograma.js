@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import "../../styles/aluno/Aluno.css";
 import SidebarAluno from "../../components/SideBarAluno";
 import "../../styles/aluno/AlunoFichamento.css";
+import API_BASE_URL from "../../config";
 
 const AlunoCronograma = () => {
     const { id } = useParams();
@@ -14,7 +15,7 @@ const AlunoCronograma = () => {
     // Usar useCallback para evitar recriação da função
     const fetchFichamento = useCallback(async () => {
         try {
-            const response = await axios.get(`https://customenglish.up.railway.app/api/fichamento/${alunoId}/`);
+            const response = await axios.get(`${API_BASE_URL}/api/fichamento/${alunoId}/`);
             setFichamento(response.data);
         } catch (error) {
             console.error("Erro ao buscar o fichamento:", error);
@@ -23,7 +24,7 @@ const AlunoCronograma = () => {
 
     const fetchAluno = useCallback(async () => {
         try {
-            const response = await axios.get(`https://customenglish.up.railway.app/api/aluno/${alunoId}/`);
+            const response = await axios.get(`${API_BASE_URL}/api/aluno/${alunoId}/`);
             setAluno(response.data);
         } catch (error) {
             console.error("Erro ao buscar o aluno:", error);

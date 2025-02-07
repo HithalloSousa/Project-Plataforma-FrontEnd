@@ -3,6 +3,7 @@ import { FaEnvelope, FaLock } from "react-icons/fa"; // Importando os ícones
 import "../styles/Login.css"; // Arquivo de estilo específico (opcional)
 import logo from "../media/Logo-sem-fundo.png"
 import { useNavigate } from "react-router-dom";
+import API_BASE_URL from "../config";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -21,7 +22,14 @@ const Login = () => {
     setError("");
 
     try {
-      const response = await fetch("https://customenglish.up.railway.app/api/login/", {
+      // const response = await fetch("https://customenglish.up.railway.app/api/login/", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json"
+      //   },
+      //   body: JSON.stringify({ email, senha:password }),
+      // });
+      const response = await fetch(`${API_BASE_URL}/api/login/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

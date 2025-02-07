@@ -5,6 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import { FaUser, FaTasks, FaBell } from "react-icons/fa";
 import "../../styles/professor/Professor.css"; // Estilos adicionais para o layout
 import axios from "axios"; // Para fazer a requisição à API
+import API_BASE_URL from "../../config";
 
 const TeacherDashboard = () => {
   const [alunos, setAlunos] = useState([]);
@@ -19,7 +20,7 @@ const TeacherDashboard = () => {
 
   const fetchAlunos = async () => {
     try {
-      const response = await axios.get("https://customenglish.up.railway.app/api/alunos/");
+      const response = await axios.get(`${API_BASE_URL}/api/alunos/`);
       setAlunos(response.data);
     } catch (error) {
       console.error("Erro ao buscar alunos:", error);
@@ -28,7 +29,7 @@ const TeacherDashboard = () => {
 
   const fetchTarefas = async () => {
     try {
-      const response = await axios.get("https://customenglish.up.railway.app/api/tarefas/");
+      const response = await axios.get(`${API_BASE_URL}/api/tarefas/`);
       setTarefas(response.data);
     } catch (error) {
       console.error("Erro ao buscar tarefas:", error)

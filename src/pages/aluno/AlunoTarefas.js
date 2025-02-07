@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import SidebarAluno from "../../components/SideBarAluno";
 import "../../styles/aluno/Aluno.css";
 import "../../styles/aluno/AlunoTarefas.css";
+import API_BASE_URL from "../../config";
 
 const AlunoTarefas = () => {
     const { id } = useParams();
@@ -20,8 +21,8 @@ const AlunoTarefas = () => {
         const fetchData = async () => {
             try {
                 const [alunoResponse, tarefasResponse] = await Promise.all([
-                    axios.get(`https://customenglish.up.railway.app/api/aluno/${alunoId}/`),
-                    axios.get(`https://customenglish.up.railway.app/api/tarefas/${alunoId}/`)
+                    axios.get(`${API_BASE_URL}/api/aluno/${alunoId}/`),
+                    axios.get(`${API_BASE_URL}/api/tarefas/${alunoId}/`)
                 ]);
                 setAluno(alunoResponse.data);
                 setTarefas(tarefasResponse.data);
@@ -58,7 +59,7 @@ const AlunoTarefas = () => {
 
         try {
             const response = await axios.post(
-                "https://customenglish.up.railway.app/api/tarefas/concluir-tarefa/",
+                `${API_BASE_URL}/api/tarefas/concluir-tarefa/`,
                 formData,
                 { headers: { "Content-Type": "multipart/form-data" } }
             );
@@ -130,7 +131,7 @@ const AlunoTarefas = () => {
                                     <h4 className="imagem-title">Imagem Enviada:</h4>
                                     <div className="image-container"> 
                                         <img
-                                            src={tarefa.imagem_concluida.startsWith("http") ? tarefa.imagem_concluida : `http://localhost:8000${tarefa.imagem_concluida}`}
+                                            src={tarefa.imagem_concluida.startsWith("http") ? tarefa.imagem_concluida : `${API_BASE_URL}${tarefa.imagem_concluida}`}
                                             alt="Tarefa Concluída"
                                             className="tarefa-imagem"
                                         />
@@ -144,7 +145,7 @@ const AlunoTarefas = () => {
                                     <h4 className="imagem-title">Correção do Professor:</h4>
                                     {tarefa.imagem_correcao ? (
                                         <a
-                                            href={tarefa.imagem_correcao.startsWith("http") ? tarefa.imagem_correcao : `http://localhost:8000${tarefa.imagem_correcao}`}
+                                            href={tarefa.imagem_correcao.startsWith("http") ? tarefa.imagem_correcao : `${API_BASE_URL}${tarefa.imagem_correcao}`}
                                             download
                                             target="_blank"
                                             rel="noopener noreferrer"

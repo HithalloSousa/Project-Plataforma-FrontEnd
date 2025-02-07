@@ -5,6 +5,7 @@ import Sidebar from "../../components/SideBarProfessor";
 import "../../styles/professor/Professor.css";
 import "../../styles/professor/ProfessorAluno.css";
 import "../../styles/professor/TarefaAluno.css";
+import API_BASE_URL from "../../config";
 
 const TarefasAluno = () => {
   const { id } = useParams(); // Pega o ID do aluno da URL
@@ -14,7 +15,7 @@ const TarefasAluno = () => {
   // Função para buscar as tarefas do aluno
   const fetchTarefas = async () => {
     try {
-      const response = await axios.get(`https://customenglish.up.railway.app/api/tarefas/${id}/`, {
+      const response = await axios.get(`${API_BASE_URL}/api/tarefas/${id}/`, {
         params: { aluno_id: id },
       });
 
@@ -42,7 +43,7 @@ const TarefasAluno = () => {
 
     try {
       await axios.post(
-        `https://customenglish.up.railway.app/api/corrigir-tarefa/${tarefaId}/`,
+        `${API_BASE_URL}/api/corrigir-tarefa/${tarefaId}/`,
         formData,
         {
           headers: {
@@ -93,7 +94,7 @@ const TarefasAluno = () => {
                           src={
                             tarefa.imagem_concluida.startsWith("http")
                             ? tarefa.imagem_concluida
-                            : `https://customenglish.up.railway.app${tarefa.imagem_concluida}`
+                            : `${API_BASE_URL}${tarefa.imagem_concluida}`
                           }
                           alt="Tarefa Concluida"
                           className="tarefa-imagem"
@@ -103,7 +104,7 @@ const TarefasAluno = () => {
                           }}
                         />
                         <a
-                          href={tarefa.imagem_concluida.startsWith("http") ? tarefa.imagem_concluida : `https://customenglish.up.railway.app${tarefa.imagem_concluida}`}
+                          href={tarefa.imagem_concluida.startsWith("http") ? tarefa.imagem_concluida : `${API_BASE_URL}${tarefa.imagem_concluida}`}
                           dowload
                           target="_blank"
                           rel="noopener noreferrer"

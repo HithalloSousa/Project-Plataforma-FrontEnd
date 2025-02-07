@@ -4,6 +4,7 @@ import Sidebar from "../../components/SideBarProfessor";
 import "../../styles/professor/Professor.css";
 import "../../styles/professor/ProfessorAluno.css";
 import "../../styles/professor/TarefaForm.css";
+import API_BASE_URL from "../../config";
 
 const TarefaForm = () => {
     const [tarefas, setTarefas] = useState([]);
@@ -12,7 +13,7 @@ const TarefaForm = () => {
 
     const fetchTarefas = async () => {
         try {
-            const response = await axios.get("https://customenglish.up.railway.app/api/tarefas/");
+            const response = await axios.get(`${API_BASE_URL}/api/tarefas/`);
             const tarefasData = response.data;
 
             // Verifica se há IDs duplicados
@@ -23,7 +24,7 @@ const TarefaForm = () => {
             }
 
             // Buscar alunos completos para cada tarefa
-            const alunosResponse = await axios.get("https://customenglish.up.railway.app/api/alunos/");
+            const alunosResponse = await axios.get(`${API_BASE_URL}/api/alunos/`);
             const alunosData = alunosResponse.data;
 
             // Verifica se há IDs duplicados
@@ -50,7 +51,7 @@ const TarefaForm = () => {
 
     const fetchAlunos = async () => {
         try {
-            const response = await axios.get("https://customenglish.up.railway.app/api/alunos/");
+            const response = await axios.get(`${API_BASE_URL}/api/alunos/`);
             setAlunos(response.data);
         } catch (error) {
             console.error("Erro ao buscar alunos:", error);
@@ -68,7 +69,7 @@ const TarefaForm = () => {
         }
 
         try {
-            const response = await axios.post("https://customenglish.up.railway.app/api/criar-tarefas/", formData);
+            const response = await axios.post(`${API_BASE_URL}/api/criar-tarefas/`, formData);
             alert("Tarefa criada com sucesso!!");
             setTarefas((prevTarefas) => [...prevTarefas, response.data]);
             setNovaTarefa({ titulo: "", descricao: "", arquivo: null });
@@ -80,7 +81,7 @@ const TarefaForm = () => {
 
     const handleAtribuirTarefa = async (tarefaId, alunoId) => {
         try {
-            await axios.post("https://customenglish.up.railway.app/api/atribuir-tarefa/", {
+            await axios.post(`${API_BASE_URL}/api/atribuir-tarefa/`, {
                 aluno_id: alunoId,
                 tarefa_id: tarefaId
             });
@@ -117,7 +118,7 @@ const TarefaForm = () => {
 
     const handleExcluirTarefa = async (tarefaId) => {
         try {
-            await axios.delete(`https://customenglish.up.railway.app/api/deletar/tarefa/${tarefaId}/`);
+            await axios.delete(`${API_BASE_URL}/api/deletar/tarefa/${tarefaId}/`);
             alert("Tarefa excluída com sucesso!");
             fetchTarefas();
         } catch (error) {
@@ -129,7 +130,7 @@ const TarefaForm = () => {
     const handleRemoverAluno = async (tarefaId, alunoId) => {
         try {
             const response = await axios.patch(
-                `https://customenglish.up.railway.app/api/remover-aluno/${tarefaId}/`, { aluno_id: alunoId }
+                `${API_BASE_URL}/api/remover-aluno/${tarefaId}/`, { aluno_id: alunoId }
             );
     
             alert("Aluno removido da tarefa com sucesso!");
