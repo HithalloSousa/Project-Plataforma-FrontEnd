@@ -196,6 +196,7 @@ const TarefaForm = () => {
                             value={novaTarefa.descricao}
                             onChange={(e) => setNovaTarefa({ ...novaTarefa, descricao: e.target.value })}
                             placeholder="Digite a descrição da tarefa..."
+                            style={{ whiteSpace: "pre-wrap" }}
                         />
                     </div>
                     <div className="form-group">

@@ -198,6 +198,10 @@
     background-color: #e90000;
 }
 
+.tarefa-descricao {
+    white-space: pre-wrap;
+}
+
 textarea, input {
     width: 97%; /* Tira a limitação de largura */
     padding: 12px 15px; /* Aumenta o espaço interno */

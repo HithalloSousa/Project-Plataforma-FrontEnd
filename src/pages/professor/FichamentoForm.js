@@ -127,6 +127,7 @@ const FichamentoForm = () => {
                 value={fichamento.nivel_detalhado}
                 onChange={handleChange}
                 required
+                style={{ whiteSpace: "pre-wrap" }}
               />
             </div>
             <div>
@@ -136,6 +137,7 @@ const FichamentoForm = () => {
                 value={fichamento.cronograma_conteudos}
                 onChange={handleChange}
                 required
+                style={{ whiteSpace: "pre-wrap" }}
               />
             </div>
             <div>
@@ -145,6 +147,7 @@ const FichamentoForm = () => {
                 value={fichamento.metodologia_personalizada}
                 onChange={handleChange}
                 required
+                style={{ whiteSpace: "pre-wrap" }}
               />
             </div>
             <button type="submit" disabled={isLoading}>

@@ -49,7 +49,7 @@ const AlunoCronograma = () => {
                 </div>
                 <div className="card">
                     <h2 className="h2-fichamento-aluno">Cronograma de estudos:</h2>
-                    <p>{fichamento.cronograma_conteudos}</p>
+                    <p style={{ whiteSpace: "pre-wrap" }}>{fichamento.cronograma_conteudos}</p>
                 </div>
             </div>
         </div>

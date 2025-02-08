@@ -75,11 +75,11 @@ const AlunoFichamento = () => {
                 </div>
                 <div className="card">
                     <h2 className="h2-fichamento-aluno">Nível detalhado:</h2>
-                    <p>{fichamento.nivel_detalhado}</p>
+                    <p style={{ whiteSpace: "pre-wrap" }}>{fichamento.nivel_detalhado}</p>
                 </div>
                 <div className="card">
                     <h2 className="h2-fichamento-aluno">Metodologia Personalizada:</h2>
-                    <p>{fichamento.metodologia_personalizada}</p>
+                    <p style={{ whiteSpace: "pre-wrap" }}>{fichamento.metodologia_personalizada}</p>
                 </div>
             </div>
         </div>
