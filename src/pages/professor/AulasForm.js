@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import Sidebar from "../../components/SideBarProfessor";
+import SidebarNewProfessor from "../../components/SideBarNewProfessor";
 import "../../styles/professor/Professor.css";
 import "../../styles/professor/ProfessorAluno.css"; 
 import "../../styles/professor/FichamentoForm.css";
@@ -17,6 +17,8 @@ const AulasForm = () => {
     const [titulo, setTitulo] = useState("");
     const [data, setData] = useState("");
     const [mensagem, setMensagem] = useState("");
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Estado da SideBar
+
     const formatDate = (dateString) => {
         const date = parseISO(dateString);
         return format(date, 'dd/MM/yyyy');
@@ -73,8 +75,8 @@ const AulasForm = () => {
 
     return (
         <div className="professor-layout">
-            <Sidebar />
-            <div className="main-content">
+            <SidebarNewProfessor isOpen={isSidebarOpen} toggleSideBar={() => setIsSidebarOpen(!isSidebarOpen)} />
+            <div className={`main-content ${isSidebarOpen ? 'sidebar-open' : ''}`}>
                 <div className="form-container">
                     <h2>Aulas Cadastradas</h2>
                     {mensagem && <p className="mensagem-sucesso">{mensagem}</p>}

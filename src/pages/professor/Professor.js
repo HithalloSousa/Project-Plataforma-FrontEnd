@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Sidebar from "../../components/SideBarProfessor";
+import SidebarNewProfessor from "../../components/SideBarNewProfessor";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import { FaUser, FaTasks, FaBell } from "react-icons/fa";
+import { FaUser, FaTasks, FaBell, FaBars } from "react-icons/fa";
 import "../../styles/professor/Professor.css"; // Estilos adicionais para o layout
 import axios from "axios"; // Para fazer a requisição à API
 import API_BASE_URL from "../../config";
@@ -10,8 +10,11 @@ import API_BASE_URL from "../../config";
 const TeacherDashboard = () => {
   const [alunos, setAlunos] = useState([]);
   const [tarefas, setTarefas] = useState([]);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Estado da SideBar
   const totalAlunos = alunos.length;
   const totalTarefas = tarefas.length;
+
+  
   const notificacoes = [
     "Nova tarefa criada: Redação sobre clima.",
     "Aluno João Silva completou uma tarefa.",
@@ -43,12 +46,14 @@ const TeacherDashboard = () => {
 
   return (
     <div className="professor-layout">
-      <Sidebar />
-      <div className="main-content">
+      <SidebarNewProfessor isOpen={isSidebarOpen} toggleSideBar={() => setIsSidebarOpen(!isSidebarOpen)} />
+      
+      <div className={`main-content ${isSidebarOpen ? 'sidebar-open' : ''}`}>
         <div className="teacher-dashboard">
-          <h1 className="dashboard-title">Bem-vindo, Professor!</h1>
+          <h1 className="dashboard-title">Welcome, Teacher!</h1>
+
+          {/* Cartões Resumo */}
           <div className="dashboard-summary">
-            {/* Cartões Resumo */}
             <Card className="summary-card">
               <CardContent>
                 <FaUser className="summary-icon" />

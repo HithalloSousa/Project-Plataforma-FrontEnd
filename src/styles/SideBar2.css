@@ -1,0 +1,111 @@
+/* src/components/SideBar.css */
+.sidebar-container {
+  position: fixed; /* Fixa a sidebar na tela */
+  top: 0;
+  left: -250px; /* Começa escondida */
+  width: 250px;
+  height: 100vh;
+  background: #1e293b;
+  color: white;
+  transition: left 0.3s ease-in-out;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+  
+.sidebar-container.open {
+  left: 0; /* Abre a sidebar */
+}
+  
+.menu-icon {
+  position: fixed;
+  top: 5px;
+  left: 5px;
+  background: #1e293b;
+  color: white;
+  padding: 5px;
+  border-radius: 45%;
+  cursor: pointer;
+  z-index: 1100;
+}
+  
+.menu-items {
+  flex: 1; /* Faz com que os itens do menu ocupem o espaço disponível */
+}
+
+.menu-item {
+  text-decoration: none; /* Remove o sublinhado */
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+.menu-item:hover {
+  background-color: #34495e;
+}
+
+.menu-item span {
+  margin-left: 10px;
+  display: none;
+}
+
+.sidebar-container.open .menu-item span {
+  display: inline;
+}
+
+.logoff-button {
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  background-color: #2c3e50; /* Cor de fundo para destacar o footer */
+  border-top: 1px solid #34495e; /* Linha separadora */
+}
+
+.logoff-button:hover {
+  background-color: #e74c3c; /* Cor de destaque para o hover */
+}
+
+.logoff-button span {
+  margin-left: 10px;
+  display: none;
+}
+
+.sidebar-container.open .logoff-button span {
+  display: inline;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 900;
+}
+
+.overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (max-width: 768px) {
+  .sidebar-container {
+    width: var(--sidebar-width, 60px);
+  }
+
+  .sidebar-container.open {
+    --sidebar-width: 100%;
+  }
+}

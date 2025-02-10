@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import "../../styles/aluno/Aluno.css";
-import SidebarAluno from "../../components/SideBarAluno";
+import SidebarNewAluno from "../../components/SideBarNewAluno";
 import "../../styles/aluno/AlunoFichamento.css";
 import API_BASE_URL from "../../config";
 
@@ -11,6 +11,7 @@ const AlunoCronograma = () => {
     const alunoId = id;
     const [aluno, setAluno] = useState({});
     const [fichamento, setFichamento] = useState({});
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Estado da SideBar
 
     // Usar useCallback para evitar recriação da função
     const fetchFichamento = useCallback(async () => {
@@ -40,15 +41,15 @@ const AlunoCronograma = () => {
 
     return (
         <div className="aluno-layout">
-            <SidebarAluno />
-            <div className="main-content-aluno">
+            <SidebarNewAluno isOpen={isSidebarOpen} toggleSideBar={() => setIsSidebarOpen(!isSidebarOpen)} />
+            <div className={`main-content-aluno ${isSidebarOpen ? 'sidebar-open' : ''}`}>
                 <div className="card">
-                    <h1 className="h1-fichamento-aluno">Cronograma</h1>
-                    <h2 className="h2-fichamento-aluno">{aluno.nome}, bem-vindo ao seu cronograma!</h2>
-                    <p>Aqui você tem acesso ao cronograma do seu curso, como duração e contéudos a serem vistos.</p>
+                    <h1 className="h1-fichamento-aluno">RoadMap</h1>
+                    <h2 className="h2-fichamento-aluno">{aluno.nome}, welcome to your roadmap!</h2>
+                    <p>Here you have access to your course roadmap, with duration and content to be viewed.</p>
                 </div>
                 <div className="card">
-                    <h2 className="h2-fichamento-aluno">Cronograma de estudos:</h2>
+                    <h2 className="h2-fichamento-aluno">Study roadmap:</h2>
                     <p style={{ whiteSpace: "pre-wrap" }}>{fichamento.cronograma_conteudos}</p>
                 </div>
             </div>

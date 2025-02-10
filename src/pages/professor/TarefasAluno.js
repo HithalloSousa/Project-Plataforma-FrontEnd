@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import Sidebar from "../../components/SideBarProfessor";
+import SidebarNewProfessor from "../../components/SideBarNewProfessor";
 import "../../styles/professor/Professor.css";
 import "../../styles/professor/ProfessorAluno.css";
 import "../../styles/professor/TarefaAluno.css";
@@ -11,6 +11,7 @@ const TarefasAluno = () => {
   const { id } = useParams(); // Pega o ID do aluno da URL
   const [tarefas, setTarefas] = useState([]); // Estado para armazenar as tarefas
   const [imagemCorrecao, setImagemCorrecao] = useState({});
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Estado da SideBar
 
   // Função para buscar as tarefas do aluno
   const fetchTarefas = async () => {
@@ -66,8 +67,8 @@ const TarefasAluno = () => {
 
   return (
     <div className="professor-layout">
-      <Sidebar />
-      <div className="main-content">
+      <SidebarNewProfessor isOpen={isSidebarOpen} toggleSideBar={() => setIsSidebarOpen(!isSidebarOpen)} />
+      <div className={`main-content ${isSidebarOpen ? 'sidebar-open' : ''}`}>
         <h1>Tarefas do Aluno</h1>
 
         {/* Lista de tarefas */}

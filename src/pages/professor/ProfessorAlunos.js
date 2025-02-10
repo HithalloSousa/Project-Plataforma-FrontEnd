@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Sidebar from "../../components/SideBarProfessor";
+import SidebarNewProfessor from "../../components/SideBarNewProfessor";
 import "../../styles/professor/Professor.css";
 import "../../styles/professor/ProfessorAluno.css";
 import axios from "axios";
@@ -10,6 +10,7 @@ const ProfessorAlunos = () => {
   const [alunos, setAlunos] = useState([]);
   const [novoAluno, setNovoAluno] = useState({ nome: "", email: "", senha: "", categoria_id: 1 });
   const navigate = useNavigate();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Estado da SideBar
 
   const fetchAlunos = async () => {
     try {
@@ -84,8 +85,8 @@ const ProfessorAlunos = () => {
 
   return (
     <div className="professor-layout">
-      <Sidebar />
-      <div className="main-content">
+      <SidebarNewProfessor isOpen={isSidebarOpen} toggleSideBar={() => setIsSidebarOpen(!isSidebarOpen)} />
+      <div className={`main-content ${isSidebarOpen ? 'sidebar-open' : ''}`}>
         <h1>Lista de Alunos</h1>
 
         <form onSubmit={handleCriarAluno} className="criar-aluno-form">

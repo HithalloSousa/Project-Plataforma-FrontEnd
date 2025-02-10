@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Sidebar from "../../components/SideBarProfessor";
+import SidebarNewProfessor from "../../components/SideBarNewProfessor";
 import "../../styles/professor/Professor.css";
 import "../../styles/professor/ProfessorAluno.css";
 import "../../styles/professor/TarefaForm.css";
@@ -10,6 +10,7 @@ const TarefaForm = () => {
     const [tarefas, setTarefas] = useState([]);
     const [alunos, setAlunos] = useState([]);
     const [novaTarefa, setNovaTarefa] = useState({ titulo: "", descricao: "", arquivo: null });
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Estado da SideBar
 
     const fetchTarefas = async () => {
         try {
@@ -172,8 +173,8 @@ const TarefaForm = () => {
 
     return (
         <div className="professor-layout">
-            <Sidebar />
-            <div className="container">
+            <SidebarNewProfessor isOpen={isSidebarOpen} toggleSideBar={() => setIsSidebarOpen(!isSidebarOpen)} />
+            <div className={`main-content ${isSidebarOpen ? 'sidebar-open' : ''}`}>
                 <h1>Lista de Tarefas</h1>
 
                 <form onSubmit={handleCriarTarefa} className="form">

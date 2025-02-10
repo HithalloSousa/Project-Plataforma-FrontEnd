@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../../styles/aluno/Aluno.css";
 import { useParams } from "react-router-dom";
-import SidebarAluno from "../../components/SideBarAluno";
+import SidebarNewAluno from "../../components/SideBarNewAluno";
 import "../../styles/aluno/AlunoFichamento.css";
 import API_BASE_URL from "../../config";
 
@@ -12,6 +12,7 @@ const AlunoFichamento = () => {
     const [aluno, setAluno] = useState({});
     const [fichamento, setFichamento] = useState({});
     const [nivelAlunoNome, setNivelAlunoNome] = useState(""); // Estado para armazenar o nome do nível
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Estado da SideBar
 
     const fetchFichamento = async () => {
         try {
@@ -62,23 +63,23 @@ const AlunoFichamento = () => {
 
     return (
         <div className="aluno-layout">
-            <SidebarAluno />
-            <div className="main-content-aluno">
-                <h1 className="h1-fichamento-aluno">Fichamento</h1>
+            <SidebarNewAluno isOpen={isSidebarOpen} toggleSideBar={() => setIsSidebarOpen(!isSidebarOpen)} />
+            <div className={`main-content-aluno ${isSidebarOpen ? 'sidebar-open' : ''}`}>
+                <h1 className="h1-fichamento-aluno">Registration</h1>
                 <div className="card">
-                    <h2 className="h2-fichamento-aluno">{aluno.nome}, bem-vindo ao seu fichamento!</h2>
-                    <p>Em seu fichamento, você tem acesso a descrição detalhada do seu nível, a metodologia personalizada de acordo com seu perfil, nível e objetivo!</p>
+                    <h2 className="h2-fichamento-aluno">{aluno.nome}, Welcome to your Registration!</h2>
+                    <p>In your file, you have access to a detailed description of your level, the personalized methodology according to your profile, level and objective!</p>
                 </div>
                 <div className="card">
-                    <h2 className="h2-fichamento-aluno">Nível do aluno:</h2>
+                    <h2 className="h2-fichamento-aluno">Student level:</h2>
                     <p>{nivelAlunoNome}</p> {/* Exibe o nome do nível */}
                 </div>
                 <div className="card">
-                    <h2 className="h2-fichamento-aluno">Nível detalhado:</h2>
+                    <h2 className="h2-fichamento-aluno">Detailed level:</h2>
                     <p style={{ whiteSpace: "pre-wrap" }}>{fichamento.nivel_detalhado}</p>
                 </div>
                 <div className="card">
-                    <h2 className="h2-fichamento-aluno">Metodologia Personalizada:</h2>
+                    <h2 className="h2-fichamento-aluno">Customized Methodology:</h2>
                     <p style={{ whiteSpace: "pre-wrap" }}>{fichamento.metodologia_personalizada}</p>
                 </div>
             </div>

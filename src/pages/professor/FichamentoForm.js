@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
-import Sidebar from "../../components/SideBarProfessor";
+import SidebarNewProfessor from "../../components/SideBarNewProfessor";
 import "../../styles/professor/Professor.css";
 import "../../styles/professor/ProfessorAluno.css"; // Estilos adicionais para o layout
 import "../../styles/professor/FichamentoForm.css"
@@ -14,6 +14,7 @@ const FichamentoForm = () => {
   const [niveis, setNiveis] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Estado da SideBar
 
   const fetchNiveis = async () => {
     try {
@@ -90,8 +91,8 @@ const FichamentoForm = () => {
 
   return (
     <div className="professor-layout">
-      <Sidebar />
-      <div className="main-content">
+      <SidebarNewProfessor isOpen={isSidebarOpen} toggleSideBar={() => setIsSidebarOpen(!isSidebarOpen)} />
+      <div className={`main-content ${isSidebarOpen ? 'sidebar-open' : ''}`}>
         <div className="form-container">
           <h2>{fichamento.id ? "Editar Fichamento" : "Criar Fichamento"}</h2>
           {error && <p className="error-message">{error}</p>}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Sidebar from "../../components/SideBarProfessor";
+import SidebarNewProfessor from "../../components/SideBarNewProfessor";
 import "../../styles/professor/ProfessorEditaAluno.css";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -9,6 +9,7 @@ const ProfessorEditaAluno = () => {
     const { id } = useParams(); // Pega o ID do aluno da URL
     const [aluno, setAluno] = useState({ nome: "", email: "" });
     const navigate = useNavigate();
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Estado da SideBar
 
     useEffect(() => {
         const fetchAluno = async () => {
@@ -55,8 +56,8 @@ const ProfessorEditaAluno = () => {
 
     return (
         <div className="professor-edita-aluno-container">
-            <Sidebar />
-            <div className="main-content">
+            <SidebarNewProfessor isOpen={isSidebarOpen} toggleSideBar={() => setIsSidebarOpen(!isSidebarOpen)} />
+            <div className={`main-content ${isSidebarOpen ? 'sidebar-open' : ''}`}>
                 <h1>Editar Aluno</h1>
                 <form onSubmit={handleSubmit} className="edita-aluno-form">
                     <div className="form-group">

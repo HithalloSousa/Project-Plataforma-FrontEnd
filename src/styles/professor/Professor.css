@@ -7,8 +7,8 @@
 .main-content {
   flex-grow: 1;
   padding: 20px;
-  margin-left: 250px; /* Espaço para a sidebar */
-  transition: margin 0.3s ease;
+  transition: margin-left 0.3s ease;
+  margin-left: 0; /* Padrão: sidebar fechada */
 }
 
 .teacher-dashboard {
@@ -16,6 +16,10 @@
   font-family: 'Poppins', sans-serif; /* Fonte moderna */
   max-width: 1200px;
   margin: 0 auto;
+}
+
+.main-content.sidebar-open {
+  margin-left: 250px; /* Só empurra quando a sidebar estiver aberta */
 }
 
 .dashboard-title {
@@ -140,16 +144,9 @@
 }
 
 /* Responsividade */
-/* Responsividade - Ajustes na Sidebar e Layout Principal */
-
-/* Quando a tela for menor que 768px (tablets e telas médias) */
 @media (max-width: 768px) {
   .professor-layout {
     flex-direction: column; /* Alinha os elementos em coluna */
-  }
-
-  .sidebar {
-    width: 60px; /* Reduz a largura da sidebar em telas menores */
   }
 
   .main-content {
@@ -184,14 +181,9 @@
   }
 }
 
-/* Quando a tela for menor que 480px (smartphones) */
 @media (max-width: 480px) {
   .professor-layout {
     flex-direction: column; /* Empilha os elementos */
-  }
-
-  .sidebar {
-    width: 50px; /* Sidebar ainda menor em dispositivos muito pequenos */
   }
 
   .main-content {

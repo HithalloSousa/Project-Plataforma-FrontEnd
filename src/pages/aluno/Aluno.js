@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios"; // Importe o axios
 import "../../styles/aluno/Aluno.css";
-import SidebarAluno from "../../components/SideBarAluno";
+// import SidebarAluno from "../../components/SideBarAluno";
+import SidebarNewAluno from "../../components/SideBarNewAluno";
 import API_BASE_URL from "../../config";
 
 const Aluno = () => {
@@ -9,6 +10,7 @@ const Aluno = () => {
   const [aluno, setAluno] = useState({});
   const [aulas, setAulas] = useState([]);
   const [aulaAtualIndex, setAulaAtualIndex] = useState(0);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Estado da SideBar
   
 
   // Função para buscar os dados do aluno
@@ -58,55 +60,55 @@ const Aluno = () => {
 
   return (
     <div className="aluno-layout">
-      <SidebarAluno />
-      <div className="main-content-aluno">
+      <SidebarNewAluno isOpen={isSidebarOpen} toggleSideBar={() => setIsSidebarOpen(!isSidebarOpen)} />
+      <div className={`main-content-aluno ${isSidebarOpen ? 'sidebar-open' : ''}`}>
         <h1>Home</h1>
-        <p>Bem vindo, {aluno.nome}!</p>
+        <p>Welcome, {aluno.nome}!</p>
 
         <div className="aulas-container">
           <div className="aula-card">
-            <h2>Aula Anterior</h2>
+            <h2>Last Class</h2>
             {aulaAtualIndex > 0 ? (
               <div>
                 <h3>{aulas[aulaAtualIndex - 1].titulo}</h3>
                 <p>{aulas[aulaAtualIndex - 1].data}</p>
               </div>
             ) : (
-              <p>Não há aula anterior.</p>
+              <p>There is no previous class.</p>
             )}
           </div>
 
           <div className="aula-card">
-            <h2>Aula Atual</h2>
+            <h2>Current Class</h2>
             {aulas.length > 0 ? (
               <div>
                 <h3>{aulas[aulaAtualIndex].titulo}</h3>
                 <p>{aulas[aulaAtualIndex].data}</p>
               </div>
             ) : (
-              <p>Não há aula atual.</p>
+              <p>There is no current class.</p>
             )}
           </div>
 
           <div className="aula-card">
-            <h2>Próxima Aula</h2>
+            <h2>Next Class</h2>
             {aulaAtualIndex < aulas.length - 1 ? (
               <div>
                 <h3>{aulas[aulaAtualIndex + 1].titulo}</h3>
                 <p>{aulas[aulaAtualIndex + 1].data}</p>
               </div>
             ) : (
-              <p>Não há próxima aula.</p>
+              <p>There is no next class.</p>
             )}
           </div>
         </div>
 
         <div className="navegacao-aulas">
           <button onClick={aulaAnterior} disabled={aulaAtualIndex === 0}>
-            Aula Anterior
+            Previous Class
           </button>
           <button onClick={aulaPosterior} disabled={aulaAtualIndex === aulas.length - 1}>
-            Próxima Aula
+            Next Class
           </button>
         </div>
       </div>

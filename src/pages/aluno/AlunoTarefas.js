@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import SidebarAluno from "../../components/SideBarAluno";
+import SidebarNewAluno from "../../components/SideBarNewAluno";
 import "../../styles/aluno/Aluno.css";
 import "../../styles/aluno/AlunoTarefas.css";
 import API_BASE_URL from "../../config";
@@ -15,6 +15,7 @@ const AlunoTarefas = () => {
     const [previews, setPreviews] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Estado da SideBar
 
     useEffect(() => {
         document.title = 'Tarefas'
@@ -94,9 +95,9 @@ const AlunoTarefas = () => {
 
     return (
         <div className="aluno-layout">
-            <SidebarAluno />
-            <div className="main-content-aluno">
-                <h1 className="h1-tarefa-aluno">Tarefas</h1>
+            <SidebarNewAluno isOpen={isSidebarOpen} toggleSideBar={() => setIsSidebarOpen(!isSidebarOpen)} />
+            <div className={`main-content-aluno ${isSidebarOpen ? 'sidebar-open' : ''}`}>
+                <h1 className="h1-tarefa-aluno">Tasks</h1>
                 <div className="tarefas-container">
                     {tarefas.map((tarefa) => (
                         <div key={tarefa.id} className="tarefa-card">
@@ -104,12 +105,12 @@ const AlunoTarefas = () => {
                             <p className="tarefa-descricao">{tarefa.descricao}</p>
                             {tarefa.arquivo && (
                                 <a href={tarefa.arquivo} download target="_blank" rel="noopener noreferrer" className="download-button">
-                                    📥 Baixar Arquivo
+                                    📥 Download File
                                 </a>
                             )}
 
                             <div className="upload-section">
-                                <h3 className="upload-title">Enviar Resposta</h3>
+                                <h3 className="upload-title">Submit Response</h3>
                                 <input
                                     type="file"
                                     accept="image/*"
@@ -118,7 +119,7 @@ const AlunoTarefas = () => {
                                 />
                                 {previews[tarefa.id] && (
                                     <div className="preview-image">
-                                        <h4>Pré-visualização:</h4>
+                                        <h4>Preview:</h4>
                                         <div className="image-container"> 
                                             <img src={previews[tarefa.id]} alt="Pré-visualização" className="tarefa-imagem" />
                                         </div>
@@ -128,7 +129,7 @@ const AlunoTarefas = () => {
 
                             {tarefa.imagem_concluida && (
                                 <div className="imagem-resposta">
-                                    <h4 className="imagem-title">Imagem Enviada:</h4>
+                                    <h4 className="imagem-title">Image Submitted:</h4>
                                     <div className="image-container"> 
                                         <img
                                             src={tarefa.imagem_concluida.startsWith("http") ? tarefa.imagem_concluida : `${API_BASE_URL}${tarefa.imagem_concluida}`}
@@ -142,7 +143,7 @@ const AlunoTarefas = () => {
                             {/* Se houver uma imagem de correção, mostrar o botão de download */}
                             {tarefa.concluido && (
                                 <div className="correcao-section">
-                                    <h4 className="imagem-title">Correção do Professor:</h4>
+                                    <h4 className="imagem-title">Teacher's Correction:</h4>
                                     {tarefa.imagem_correcao ? (
                                         <a
                                             href={tarefa.imagem_correcao.startsWith("http") ? tarefa.imagem_correcao : `${API_BASE_URL}${tarefa.imagem_correcao}`}
@@ -151,7 +152,7 @@ const AlunoTarefas = () => {
                                             rel="noopener noreferrer"
                                             className="download-button"
                                         >
-                                            📥 Baixar Correção
+                                            📥 Download Patch
                                         </a>
                                     ) : (
                                         <p className="aguardando-correcao">🕒 Aguardando a correção do professor</p>
@@ -164,7 +165,7 @@ const AlunoTarefas = () => {
                                 onClick={() => concluirTarefa(tarefa.id)}
                                 disabled={tarefa.concluido}
                             >
-                                {tarefa.concluido ? "✅ Concluída" : "✔ Concluir Tarefa"}
+                                {tarefa.concluido ? "✅ Completed" : "✔ Complete Task"}
                             </button>
                         </div>
                     ))}
