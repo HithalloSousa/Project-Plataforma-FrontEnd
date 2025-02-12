@@ -1,0 +1,128 @@
+/* Professor.css */
+/* Professor.css */
+.professor-layout {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f4f7f6;
+    font-family: 'Roboto', sans-serif; /* Fonte moderna */
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 2rem; /* Usando rem para escalabilidade */
+    margin-left: 250px;
+    transition: margin-left 0.3s ease;
+}
+
+.main-content.sidebar-open {
+    margin-left: 0;
+}
+
+h1 {
+    color: #333;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem; /* Ajuste de espaçamento */
+}
+
+h2 {
+    color: #555;
+    font-size: 2rem; /* Aumentando o tamanho do título */
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.form {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 12px; /* Bordas mais arredondadas */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #444;
+}
+
+.form select,
+.form input[type="text"],
+.form textarea,
+.form input[type="file"] {
+    width: 100%;
+    padding: 1rem; /* Aumentando o padding */
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px; /* Bordas mais arredondadas */
+    font-size: 1rem;
+    transition: border-color 0.3s ease; /* Transição suave */
+}
+
+.form select:focus,
+.form input[type="text"]:focus,
+.form textarea:focus {
+    border-color: #007bff; /* Cor ao focar */
+}
+
+.form textarea {
+    resize: vertical;
+    min-height: 120px; /* Aumentando a altura mínima */
+}
+
+.form button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 0.75rem 1.5rem; /* Ajustando o padding */
+    border: none;
+    border-radius: 8px; /* Bordas mais arredondadas */
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Adicionando transformação */
+}
+
+.form button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px); /* Efeito de elevação */
+}
+
+.filtro-botoes {
+    display: flex;
+    gap: 1rem; /* Aumentando o espaço entre os botões */
+    margin-bottom: 2rem;
+}
+
+.filtro-botoes button {
+    background-color: #28a745;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+   
+}
+/* Responsividade */
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+    }
+
+    .filtro-botoes {
+        flex-direction: column;
+    }
+
+    .filtro-botoes button {
+        width: 100%;
+    }
+
+    .tarefas-list {
+        grid-template-columns: 1fr;
+    }
+}

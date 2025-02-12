@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, useNavigate } from "react-router-dom";
-import { FaHome, FaUser, FaTasks, FaSignOutAlt, FaTimes, FaBars} from "react-icons/fa";
+import { FaHome, FaUser, FaTasks, FaSignOutAlt, FaTimes, FaBars, FaBook} from "react-icons/fa";
 import { FaTimeline } from "react-icons/fa6";
 import '../styles/SideBar2.css';
 
@@ -39,6 +39,11 @@ const SidebarNewAluno = ({ isOpen, toggleSideBar }) => {
           <NavLink to={`/aluno-cronograma/${alunoId}`} className="menu-item" activeClassName="active">
             <FaTimeline />
             <span>RoadMap</span>
+          </NavLink>
+
+          <NavLink to="/aluno/materiais" className="menu-item" activeClassName="active">
+            <FaBook />
+            <span>Materials</span>
           </NavLink>
         </div>
 

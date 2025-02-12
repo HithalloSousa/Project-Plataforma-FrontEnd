@@ -1,0 +1,162 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.aluno-layout {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+    
+}
+
+.mensagem-sem-materiais {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border-radius: 5px;
+    margin-top: 20px;
+    border: 1px solid #f5c6cb;
+}
+
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+}
+
+.sidebar-open {
+    margin-left: 250px; /* Ajuste caso necessário */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.filtro-botoes {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.filtro-botoes button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.filtro-botoes button:hover {
+    background-color: #0056b3;
+}
+
+.materias-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.materias-card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+
+
+.materias-descricao {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+/* Estilo para charts */
+.materias-card img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Estilo para links */
+.materias-card a {
+    display: block;
+    color: #007bff;
+    font-size: 16px;
+    word-wrap: break-word;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.materias-card a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo para textos */
+.materias-card textarea {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+    font-size: 14px;
+    background-color: #f9f9f9;
+}
+
+.intro-text {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #555;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.intro-text ul {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+.intro-text ul li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 8px 0;
+}
+
+.inicio-botao {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.3s;
+    margin-bottom: 20px;
+}
+
+.inicio-botao:hover {
+    background-color: #218838;
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, useNavigate } from "react-router-dom";
-import { FaBars, FaTimes, FaHome, FaUser, FaEnvelope, FaSignOutAlt, FaTasks} from 'react-icons/fa';
+import { FaBars, FaTimes, FaHome, FaUser, FaEnvelope, FaSignOutAlt, FaTasks, FaBook } from 'react-icons/fa';
 import '../styles/SideBar2.css';
 
 const SidebarNewProfessor = ({ isOpen, toggleSideBar }) => {
@@ -32,6 +32,11 @@ const SidebarNewProfessor = ({ isOpen, toggleSideBar }) => {
           <NavLink to="/professor-tarefas" className="menu-item" activeClassName="active">
             <FaTasks />
             <span>Tasks</span>
+          </NavLink>
+
+          <NavLink to="/professor/materiais" className="menu-item" activeClassName="active">
+            <FaBook />
+            <span>Materials</span>
           </NavLink>
         </div>
 

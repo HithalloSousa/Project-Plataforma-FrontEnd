@@ -14,6 +14,8 @@ import AlunoFichamento from "./pages/aluno/AlunoFichamento";
 import AlunoTarefas from "./pages/aluno/AlunoTarefas";
 import AlunoCronograma from "./pages/aluno/AlunoCronograma";
 import AulasForm from "./pages/professor/AulasForm";
+import ProfessorMateriais from "./pages/professor/ProfessorMateriais";
+import AlunoMateriais from "./pages/aluno/AlunoMateriais";
 
 const App = () => {
   return (
@@ -35,6 +37,7 @@ const App = () => {
             <Route path="/aluno-fichamento/:id" element={<AlunoFichamento />} />
             <Route path="/aluno-tarefas/:id" element={<AlunoTarefas />} />
             <Route path="/aluno-cronograma/:id" element={<AlunoCronograma />} />
+            <Route path="/aluno/materiais" element={<AlunoMateriais />} />
             {/* Rotas do Professor*/}
             <Route path="/professor-dashboard" element={<TeacherDashboard />} />
             <Route path="/professor-alunos" element={<ProfessorAlunos />} />
@@ -45,6 +48,7 @@ const App = () => {
             <Route path="/professor/aluno/aulas/editar/:id" element={<AulasForm />} />
             <Route path="/professor-tarefas" element={<TarefaForm />} />
             <Route path="/professor/aluno/tarefas/editar/:id" element={<TarefasAluno />} />
+            <Route path="/professor/materiais" element={<ProfessorMateriais />} />
           </Route>
 
         </Routes>
