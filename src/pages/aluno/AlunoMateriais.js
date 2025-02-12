@@ -73,7 +73,7 @@ const AlunoMateriais = () => {
                                     )}
 
                                     {material.categoria.tipo === "Texto" && (
-                                        <div className="material-texto">{material.conteudo}</div>
+                                        <div className="material-texto" style={{whiteSpace: "pre-wrap"}}>{material.conteudo}</div>
                                     )}
                                 </div>
                             ))

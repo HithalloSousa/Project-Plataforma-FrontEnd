@@ -11,7 +11,7 @@ const ProfessorMateriais = () => {
     const [categoriaSelecionada, setCategoriaSelecionada] = useState("");
     const [conteudo, setConteudo] = useState("");
     const [arquivo, setArquivo] = useState(null);
-    const [tipoSelecionado, setTipoSelecionado] = useState("todos");
+    const [tipoSelecionado, setTipoSelecionado] = useState("Texto"); // Inicialmente seleciona "Texto"
 
     // Carrega categorias e materiais ao montar o componente
     useEffect(() => {
@@ -86,13 +86,7 @@ const ProfessorMateriais = () => {
     };
 
     // Filtra os materiais com base no tipo selecionado
-    const materiaisFiltrados = materiais.filter((material) => {
-        if (tipoSelecionado === "todos") {
-            return true; // Mostra todos os materiais
-        } else {
-            return material.categoria.tipo === tipoSelecionado; // Filtra pelo tipo selecionado
-        }
-    });
+    const materiaisFiltrados = materiais.filter((material) => material.categoria.tipo === tipoSelecionado);
 
     return (
         <div className="professor-layout">
@@ -126,6 +120,7 @@ const ProfessorMateriais = () => {
                                 onChange={(e) => setConteudo(e.target.value)}
                                 placeholder="Digite o texto"
                                 required
+                                style={{ whiteSpace: "pre-wrap" }} // Mantém a formatação do texto
                             />
                         </div>
                     )}
@@ -161,7 +156,6 @@ const ProfessorMateriais = () => {
 
                 {/* Botões para filtrar por tipo */}
                 <div className="filtro-botoes">
-                    <button onClick={() => setTipoSelecionado("todos")}>Mostrar Todos</button>
                     <button onClick={() => setTipoSelecionado("Chart")}>Mostrar Charts</button>
                     <button onClick={() => setTipoSelecionado("Link")}>Mostrar Links</button>
                     <button onClick={() => setTipoSelecionado("Texto")}>Mostrar Textos</button>
@@ -199,18 +193,20 @@ const ProfessorMateriais = () => {
                                 <textarea
                                     value={material.conteudo}
                                     readOnly
-                                    style={{ width: "100%", height: "100px" }}
+                                    style={{ width: "100%", height: "100px", whiteSpace: "pre-wrap" }} // Mantém a formatação do texto
                                 />
                             )}
 
                             {/* Botão para excluir material */}
-                            <button
-                                onClick={() => handleExcluirMaterial(material.id)}
-                                type="submit"
-                                className="submit-button-delete"
-                            >
-                                Excluir Material
-                            </button>
+                            <div style={{ marginTop: "10px" }}>
+                                <button
+                                    onClick={() => handleExcluirMaterial(material.id)}
+                                    type="submit"
+                                    className="submit-button-delete"
+                                >
+                                    Excluir Material
+                                </button>
+                            </div>
                         </div>
                     ))}
                 </div>
