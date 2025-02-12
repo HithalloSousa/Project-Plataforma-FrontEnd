@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from "react";
 import SidebarNewProfessor from "../../components/SideBarNewProfessor";
-import "../../styles/professor/ProfessorMateriais.css"
-import axios from "axios"; // Para fazer a requisição à API
+import "../../styles/professor/ProfessorMateriais.css";
+import axios from "axios";
 import API_BASE_URL from "../../config";
 
 const ProfessorMateriais = () => {
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Estado da SideBar
-    const [materiais, setMateriais] = useState([]); // Lista de materiais
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [materiais, setMateriais] = useState([]);
     const [categorias, setCategorias] = useState([]);
-    const [novoMaterial, setNovoMaterial] = useState({ categoria: "" }); // Estado para criar novo material
-    const [tipoSelecionado, setTipoSelecionado] = useState("todos"); // Estado para filtrar por tipo
-    const [categoriaSelecionada, setCategoriaSelecionada] = useState("texto"); // Estado para a categoria
-    const [conteudo, setConteudo] = useState(""); // Estado para o conteúdo (texto ou link)
-    const [arquivo, setArquivo] = useState(null); // Estado para o arquivo (imagem)
+    const [categoriaSelecionada, setCategoriaSelecionada] = useState("");
+    const [conteudo, setConteudo] = useState("");
+    const [arquivo, setArquivo] = useState(null);
+    const [tipoSelecionado, setTipoSelecionado] = useState("todos");
 
-
-    // Efeito para carregar os materiais ao montar o componente
+    // Carrega categorias e materiais ao montar o componente
     useEffect(() => {
         const fetchCategorias = async () => {
             try {
@@ -29,12 +27,7 @@ const ProfessorMateriais = () => {
         fetchMateriais();
     }, []);
 
-    // Faz a mudança de categoria
-    const handleCategoriaChange = (event) => {
-        setCategoriaSelecionada(event.target.value);
-    };
-
-    // Buscar materiais da API
+    // Busca materiais da API
     const fetchMateriais = async () => {
         try {
             const response = await axios.get(`${API_BASE_URL}/api/materiais/`);
@@ -44,7 +37,7 @@ const ProfessorMateriais = () => {
         }
     };
 
-    // Excluir material
+    // Exclui um material
     const handleExcluirMaterial = async (materialId) => {
         try {
             await axios.delete(`${API_BASE_URL}/api/materiais/deletar/${materialId}/`);
@@ -56,12 +49,19 @@ const ProfessorMateriais = () => {
         }
     };
 
+    // Limpa os campos do formulário
+    const limparCampos = () => {
+        setCategoriaSelecionada("");
+        setConteudo("");
+        setArquivo(null);
+    };
 
+    // Cria um novo material
     const handleCriarMaterial = async (event) => {
         event.preventDefault();
 
         const formData = new FormData();
-        formData.append("categoria_id", Number(categoriaSelecionada)); // Envia o ID da categoria
+        formData.append("categoria_id", Number(categoriaSelecionada));
 
         // Adiciona o campo correto com base na categoria
         if (categoriaSelecionada === "1") { // Supondo que "Texto" tenha ID 1
@@ -72,13 +72,13 @@ const ProfessorMateriais = () => {
             formData.append("chart", arquivo);
         }
 
-
         try {
             const response = await axios.post(`${API_BASE_URL}/api/materiais/criar/`, formData, {
                 headers: { "Content-Type": "multipart/form-data" }
             });
             alert("Material criado com sucesso!");
-            fetchMateriais()
+            fetchMateriais(); // Atualiza a lista de materiais
+            limparCampos(); // Limpa os campos do formulário
         } catch (error) {
             console.error("Erro ao criar material:", error);
             alert("Erro ao criar material");
@@ -94,22 +94,20 @@ const ProfessorMateriais = () => {
         }
     });
 
-
     return (
         <div className="professor-layout">
             <SidebarNewProfessor isOpen={isSidebarOpen} toggleSideBar={() => setIsSidebarOpen(!isSidebarOpen)} />
             <div className={`main-content ${isSidebarOpen ? "sidebar-open" : ""}`}>
                 <h1>Lista de Materiais</h1>
 
-
-                {/* Formulário para criar novo material (se necessário) */}
+                {/* Formulário para criar novo material */}
                 <form onSubmit={handleCriarMaterial} className="form">
                     <h2>Criar Novo Material</h2>
 
                     {/* Campo para selecionar a categoria */}
                     <div>
                         <label>Categoria:</label>
-                        <select value={categoriaSelecionada} onChange={handleCategoriaChange} required>
+                        <select value={categoriaSelecionada} onChange={(e) => setCategoriaSelecionada(e.target.value)} required>
                             <option value="">Selecione uma categoria</option>
                             {categorias.map((categoria) => (
                                 <option key={categoria.id} value={categoria.id}>
@@ -169,8 +167,6 @@ const ProfessorMateriais = () => {
                     <button onClick={() => setTipoSelecionado("Texto")}>Mostrar Textos</button>
                 </div>
 
-                
-
                 {/* Lista de materiais filtrados */}
                 <h2 className="subtitle">Materiais Criados</h2>
                 <div className="tarefas-list">
@@ -192,7 +188,6 @@ const ProfessorMateriais = () => {
                                     }}
                                 />
                             )}
-
 
                             {material.categoria.tipo === "Link" && (
                                 <a href={material.link} target="_blank" rel="noopener noreferrer">
