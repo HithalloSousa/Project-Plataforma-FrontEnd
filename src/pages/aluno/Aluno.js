@@ -63,7 +63,7 @@ const Aluno = () => {
       <SidebarNewAluno isOpen={isSidebarOpen} toggleSideBar={() => setIsSidebarOpen(!isSidebarOpen)} />
       <div className={`main-content-aluno ${isSidebarOpen ? 'sidebar-open' : ''}`}>
         <h1>Home</h1>
-        <p>Welcome, {aluno.nome}!</p>
+        <p style={{textAlign:'center'}}>Welcome, {aluno.nome}!</p>
 
         <div className="aulas-container">
           <div className="aula-card">

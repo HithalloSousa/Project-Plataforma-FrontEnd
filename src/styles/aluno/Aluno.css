@@ -7,7 +7,7 @@
 .main-content-aluno {
   flex-grow: 1;
   padding: 20px;
-  margin-left: 250px; /* Espaço para a sidebar */
+  margin-left: 0 !important;
   transition: margin 0.3s ease;
 }
 
