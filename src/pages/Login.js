@@ -90,7 +90,7 @@ const Login = () => {
             <input
                 type="password"
                 id="password"
-                placeholder="Senha"
+                placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
@@ -102,7 +102,7 @@ const Login = () => {
         {error && <div className="error-message">{error}</div>}
         
         <button type="submit" className="btn-login" disabled={loading}>
-          {loading ? "Carregando..." : "Entrar"}
+          {loading ? "Carregando..." : "Login"}
         </button>
       </form>
     </div>

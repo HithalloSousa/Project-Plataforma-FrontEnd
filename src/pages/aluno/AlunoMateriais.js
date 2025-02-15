@@ -31,23 +31,23 @@ const AlunoMateriais = () => {
         <div className="aluno-layout">
             <SidebarNewAluno isOpen={isSidebarOpen} toggleSideBar={() => setIsSidebarOpen(!isSidebarOpen)} />
             <div className={`main-content ${isSidebarOpen ? "sidebar-open" : ""}`}>
-                <h1 className="titulo">📚 Banco de Materiais</h1>
+                <h1 className="titulo">📚 Materials Bank</h1>
 
                 <div className="filtro-botoes">
-                    <button className={tipoSelecionado === "inicio" ? "active" : ""} onClick={() => setTipoSelecionado("inicio")}><FaHome /> Início</button>
+                    <button className={tipoSelecionado === "inicio" ? "active" : ""} onClick={() => setTipoSelecionado("inicio")}><FaHome /> Home</button>
                     <button className={tipoSelecionado === "Chart" ? "active" : ""} onClick={() => setTipoSelecionado("Chart")}><FaImage /> Charts</button>
                     <button className={tipoSelecionado === "Link" ? "active" : ""} onClick={() => setTipoSelecionado("Link")}><FaLink /> Links</button>
-                    <button className={tipoSelecionado === "Texto" ? "active" : ""} onClick={() => setTipoSelecionado("Texto")}><FaFileAlt /> Textos</button>
+                    <button className={tipoSelecionado === "Texto" ? "active" : ""} onClick={() => setTipoSelecionado("Texto")}><FaFileAlt /> Texts</button>
                 </div>
 
                 {tipoSelecionado === "inicio" ? (
                     <div className="intro-text">
-                        <h2>Bem-vindo ao Banco de Materiais!</h2>
-                        <p>Aqui você encontrará diversos recursos para apoiar seus estudos.</p>
+                        <h2>Welcome to the Material Bank!</h2>
+                        <p>Here you will find various resources to support your studies.</p>
                         <ul>
-                            <li><FaImage /> <strong>Charts:</strong> Diagramas e gráficos ilustrativos.</li>
-                            <li><FaLink /> <strong>Links:</strong> Referências externas para aprofundamento.</li>
-                            <li><FaFileAlt /> <strong>Textos:</strong> Materiais escritos para leitura.</li>
+                            <li><FaImage /> <strong>Charts:</strong> Illustrative diagrams and graphs.</li>
+                            <li><FaLink /> <strong>Links:</strong> External references for further study.</li>
+                            <li><FaFileAlt /> <strong>Texts:</strong> Written materials for reading.</li>
                         </ul>
                     </div>
                 ) : (
@@ -55,7 +55,7 @@ const AlunoMateriais = () => {
                         {materiaisFiltrados.length > 0 ? (
                             materiaisFiltrados.map((material) => (
                                 <div key={material.id} className="materias-card">
-                                    <p className="materias-descricao">{material.categoria.tipo}</p>
+                                    <p className="materias-descricao">{material.titulo}</p>
 
                                     {material.categoria.tipo === "Chart" && (
                                         <img

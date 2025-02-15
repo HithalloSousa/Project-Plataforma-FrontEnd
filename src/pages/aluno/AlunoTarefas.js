@@ -101,8 +101,8 @@ const AlunoTarefas = () => {
                 <div className="tarefas-container">
                     {tarefas.map((tarefa) => (
                         <div key={tarefa.id} className="tarefa-card">
-                            <h2 className="tarefa-titulo">{tarefa.titulo}</h2>
-                            <p className="tarefa-descricao">{tarefa.descricao}</p>
+                            <h2>{tarefa.titulo}</h2>
+                            <p>{tarefa.descricao}</p>
                             {tarefa.arquivo && (
                                 <a href={tarefa.arquivo} download target="_blank" rel="noopener noreferrer" className="download-button">
                                     📥 Download File
@@ -110,7 +110,7 @@ const AlunoTarefas = () => {
                             )}
 
                             <div className="upload-section">
-                                <h3 className="upload-title">Submit Response</h3>
+                                <h3>Submit Response</h3>
                                 <input
                                     type="file"
                                     accept="image/*"

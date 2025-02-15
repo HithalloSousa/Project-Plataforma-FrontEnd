@@ -11,7 +11,8 @@ const ProfessorMateriais = () => {
     const [categoriaSelecionada, setCategoriaSelecionada] = useState("");
     const [conteudo, setConteudo] = useState("");
     const [arquivo, setArquivo] = useState(null);
-    const [tipoSelecionado, setTipoSelecionado] = useState("Texto"); // Inicialmente seleciona "Texto"
+    const [titulo, setTitulo] = useState("")
+    const [tipoSelecionado, setTipoSelecionado] = useState(""); // Inicialmente seleciona "Texto"
 
     // Carrega categorias e materiais ao montar o componente
     useEffect(() => {
@@ -62,6 +63,7 @@ const ProfessorMateriais = () => {
 
         const formData = new FormData();
         formData.append("categoria_id", Number(categoriaSelecionada));
+        formData.append("titulo", titulo)
 
         // Adiciona o campo correto com base na categoria
         if (categoriaSelecionada === "1") { // Supondo que "Texto" tenha ID 1
@@ -86,7 +88,9 @@ const ProfessorMateriais = () => {
     };
 
     // Filtra os materiais com base no tipo selecionado
-    const materiaisFiltrados = materiais.filter((material) => material.categoria.tipo === tipoSelecionado);
+    const materiaisFiltrados = tipoSelecionado
+        ? materiais.filter((material) => material.categoria.tipo === tipoSelecionado)
+        : materiais.length > 0 ? [materiais[materiais.length - 1]] : [];
 
     return (
         <div className="professor-layout">
@@ -100,7 +104,7 @@ const ProfessorMateriais = () => {
 
                     {/* Campo para selecionar a categoria */}
                     <div>
-                        <label>Categoria:</label>
+                        <label style={{color:"white"}}>Categoria:</label>
                         <select value={categoriaSelecionada} onChange={(e) => setCategoriaSelecionada(e.target.value)} required>
                             <option value="">Selecione uma categoria</option>
                             {categorias.map((categoria) => (
@@ -111,10 +115,22 @@ const ProfessorMateriais = () => {
                         </select>
                     </div>
 
+                    <div>
+                        <label style={{ color: "white" }}>Título:</label>
+                        <input
+                            type="text"
+                            value={titulo}
+                            onChange={(e) => setTitulo(e.target.value)}
+                            placeholder="Digite o título"
+                            required
+                            style={{ width: "100%" }} // Ajuste o estilo conforme necessário
+                        />
+                    </div>
+
                     {/* Renderização condicional dos campos */}
                     {categoriaSelecionada === "1" && ( // Supondo que "Texto" tenha ID 1
                         <div>
-                            <label>Conteúdo:</label>
+                            <label style={{color:"white"}}>Conteúdo:</label>
                             <textarea
                                 value={conteudo}
                                 onChange={(e) => setConteudo(e.target.value)}
@@ -127,7 +143,7 @@ const ProfessorMateriais = () => {
 
                     {categoriaSelecionada === "3" && ( // Supondo que "Link" tenha ID 2
                         <div>
-                            <label>Link:</label>
+                            <label style={{color:"white"}}>Link:</label>
                             <input
                                 type="text"
                                 value={conteudo}
@@ -140,7 +156,7 @@ const ProfessorMateriais = () => {
 
                     {categoriaSelecionada === "2" && ( // Supondo que "Chart" tenha ID 3
                         <div>
-                            <label>Arquivo da Imagem:</label>
+                            <label style={{color:"white"}}>Arquivo da Imagem:</label>
                             <input
                                 type="file"
                                 onChange={(e) => setArquivo(e.target.files[0])}
@@ -162,11 +178,11 @@ const ProfessorMateriais = () => {
                 </div>
 
                 {/* Lista de materiais filtrados */}
-                <h2 className="subtitle">Materiais Criados</h2>
+                <h2 className="subtitle" style={{color:"white"}}>Materiais Criados</h2>
                 <div className="tarefas-list">
                     {materiaisFiltrados.map((material) => (
                         <div key={material.id} className="tarefa-card">
-                            <p className="tarefa-descricao">{material.categoria.tipo}</p>
+                            <p className="tarefa-descricao">{material.titulo}</p>
 
                             {/* Renderização condicional do conteúdo */}
                             {material.categoria.tipo === "Chart" && (

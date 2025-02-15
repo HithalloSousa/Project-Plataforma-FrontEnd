@@ -15,12 +15,12 @@
 .tarefa-card h3 {
     margin: 0;
     font-size: 18px;
-    color: #333;
+    color: white;
 }
 
 .tarefa-card p {
     margin: 5px 0;
-    color: #555;
+    color: white;
 }
 
 .corrigir-button {

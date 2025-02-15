@@ -1,9 +1,13 @@
 /* AlunoTarefas.css */
+/* Define a cor branca para todos os textos */
+h1, h2, h3, p{
+    color: white;
+}
+
 .aluno-layout-tarefa {
     display: flex;
     min-height: 100vh;
-    background-color: #f4f7f6;
-    font-family: 'Arial', sans-serif;
+    background-color: #A79E9C;
 }
 
 .main-content-aluno-tarefa {
@@ -14,9 +18,9 @@
 
 .h1-tarefa-aluno {
     font-size: 2.5rem;
-    color: #333;
     margin-bottom: 2rem;
     text-align: center;
+    color: white;
 }
 
 .loading, .error {
@@ -26,12 +30,24 @@
 }
 
 .tarefa-card {
-    background: #fff;
+    background: #A79E9C;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin-bottom: 20px;
     transition: transform 0.2s ease-in-out;
+}
+
+.tarefa-card h2 {
+    color: white;
+}
+
+.tarefa-card p {
+    color: white;
+}
+
+.upload-section h3 {
+    color: white;
 }
 
 .tarefa-card:hover {
@@ -41,19 +57,22 @@
 .download-button {
     display: inline-block;
     padding: 10px 15px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: #4D5D62;
     border-radius: 5px;
     text-decoration: none;
     margin-top: 10px;
 }
 
 .download-button:hover {
-    background-color: #0056b3;
+    background-color: #3c5a63;
 }
 
 .upload-section {
     margin-top: 20px;
+}
+
+.upload-title {
+    color: white;
 }
 
 .file-input {
@@ -64,6 +83,18 @@
     max-width: 100%;
     border-radius: 5px;
     margin-top: 10px;
+}
+
+.preview-image h4 {
+    color: white;
+}
+
+.imagem-resposta h4 {
+    color: white;
+}
+
+.correcao-section h4 {
+    color: white;
 }
 
 .concluir-button {
@@ -77,12 +108,10 @@
 
 .concluir-button.pendente {
     background-color: #28a745;
-    color: #fff;
 }
 
 .concluir-button.concluida {
     background-color: #6c757d;
-    color: #fff;
     cursor: not-allowed;
 }
 

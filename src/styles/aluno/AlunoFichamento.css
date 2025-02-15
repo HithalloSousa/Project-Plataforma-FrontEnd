@@ -1,19 +1,19 @@
 .h1-fichamento-aluno {
     font-size: 2.5rem;
-    color: #333;
+    color: white;
     margin-bottom: 1rem;
     text-align: center;
 }
 
 .h2-fichamento-aluno {
     font-size: 1.5rem;
-    color: #555;
+    color: white;
     margin-bottom: 1rem;
     
 }
 
 .card {
-    background: white;
+    background: #A79E9C;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 2rem;
@@ -28,12 +28,12 @@
 
 .card h2 {
     margin-top: 0;
-    color: #333;
+    color: white;
 }
 
 .card p {
     font-size: 1rem;
-    color: #666;
+    color: white;
     line-height: 1.6;
 }
 

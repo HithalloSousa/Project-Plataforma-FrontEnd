@@ -16,7 +16,7 @@
 }
 
 .aluno-card {
-  background-color: #fff;
+  background-color: #A79E9C;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -35,12 +35,12 @@
 .aluno-card h3 {
   margin: 0;
   font-size: 1.25rem;
-  color: #333;
+  color: white;
 }
 
 .aluno-card p {
   margin: 10px 0;
-  color: #666;
+  color: white;
 }
 
 .aluno-actions {
@@ -53,7 +53,7 @@
 .edit-button {
   flex: 1; /* Botões ocupam espaço igual */
   min-width: 100px; /* Largura mínima */
-  background-color: #007bff;
+  background-color: #4D5D62;
   color: #fff;
   border: none;
   padding: 8px 12px; /* Padding reduzido */
@@ -96,7 +96,7 @@
 
 /* Estilos para o formulário de criação de aluno */
 .criar-aluno-form {
-  background-color: #fff;
+  background-color: #A79E9C;
   padding: 1.5rem;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -105,7 +105,7 @@
 
 .criar-aluno-form h2 {
   font-size: 1.5rem;
-  color: #333;
+  color: white;
   margin-bottom: 1rem;
 }
 
@@ -116,7 +116,7 @@
 .criar-aluno-form .form-group label {
   display: block;
   font-size: 1rem;
-  color: #555;
+  color: white;
   margin-bottom: 0.5rem;
 }
 
@@ -126,6 +126,7 @@
   font-size: 1rem;
   border: 1px solid #ddd;
   border-radius: 4px;
+  color: white;
   transition: border-color 0.3s ease;
 }
 

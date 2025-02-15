@@ -11,6 +11,7 @@ const Aluno = () => {
   const [aulas, setAulas] = useState([]);
   const [aulaAtualIndex, setAulaAtualIndex] = useState(0);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Estado da SideBar
+  const [ultimaTarefa, setUltimaTarefa] = useState(null); //pega a ultima tarefa cadastrada
   
 
   // Função para buscar os dados do aluno
@@ -33,11 +34,28 @@ const Aluno = () => {
     }
   }, [alunoId]);
 
+  // Função para buscar a última tarefa
+  const fetchUltimaTarefa = useCallback(async () => {
+    try {
+      const response = await axios.get(`${API_BASE_URL}/api/tarefas/${alunoId}/`);
+      
+      if (response.data.length > 0) {
+        const tarefasOrdenadas = response.data.reverse(); // Inverte a ordem
+        setUltimaTarefa(tarefasOrdenadas[0]);
+      } else {
+        setUltimaTarefa(null);
+      }
+    } catch (error) {
+      console.error("Erro ao buscar a última tarefa:", error)
+    }
+  }, [alunoId])
+
   // Busca os dados do aluno e as aulas ao montar o componente
   useEffect(() => {
     fetchAluno();
     fetchAulas();
-  }, [fetchAluno, fetchAulas]);
+    fetchUltimaTarefa();
+  }, [fetchAluno, fetchAulas, fetchUltimaTarefa]);
 
   // Função para navegar para a aula anterior
   const aulaAnterior = () => {
@@ -62,8 +80,8 @@ const Aluno = () => {
     <div className="aluno-layout">
       <SidebarNewAluno isOpen={isSidebarOpen} toggleSideBar={() => setIsSidebarOpen(!isSidebarOpen)} />
       <div className={`main-content-aluno ${isSidebarOpen ? 'sidebar-open' : ''}`}>
-        <h1>Home</h1>
-        <p style={{textAlign:'center'}}>Welcome, {aluno.nome}!</p>
+        <h1 style={{color: 'white'}}>Home</h1>
+        <p style={{textAlign:'center', color:'white'}}>Welcome, {aluno.nome}!</p>
 
         <div className="aulas-container">
           <div className="aula-card">
@@ -110,6 +128,19 @@ const Aluno = () => {
           <button onClick={aulaPosterior} disabled={aulaAtualIndex === aulas.length - 1}>
             Next Class
           </button>
+        </div>
+
+        {/* Exibir a última tarefa cadastrada */}
+        <h1>Last Task</h1>
+        <div className="tarefa-card">
+          {ultimaTarefa ? (
+            <div>
+              <h3>{ultimaTarefa.titulo}</h3>
+              <p style={{ whiteSpace: "pre-wrap" }}>{ultimaTarefa.descricao}</p>
+            </div>
+          ) : (
+            <p>There is no recent task.</p>
+          )}
         </div>
       </div>
     </div>

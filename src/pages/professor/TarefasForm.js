@@ -97,9 +97,6 @@ const TarefaForm = () => {
                 return;
             }
 
-            // Atualizando a lista de alunos disponíveis, removendo o aluno atribuído
-            setAlunos(prevAlunos => prevAlunos.filter(aluno => aluno.id !== alunoId));
-
             // Atualizando a lista de tarefas
             setTarefas(prevTarefas =>
                 prevTarefas.map(tarefa =>
@@ -180,7 +177,7 @@ const TarefaForm = () => {
                 <form onSubmit={handleCriarTarefa} className="form">
                     <h2>Criar Nova Tarefa</h2>
                     <div className="form-group">
-                        <label className="label">Titulo:</label>
+                        <label className="label" style={{color:"white"}}>Titulo:</label>
                         <input
                             type="text"
                             id="titulo"
@@ -191,7 +188,7 @@ const TarefaForm = () => {
                         />
                     </div>
                     <div className="form-group">
-                        <label className="label">Descrição:</label>
+                        <label className="label" style={{color:"white"}}>Descrição:</label>
                         <textarea
                             name="descricao"
                             value={novaTarefa.descricao}
@@ -201,7 +198,7 @@ const TarefaForm = () => {
                         />
                     </div>
                     <div className="form-group">
-                        <label className="label">Arquivo:</label>
+                        <label className="label" style={{color:"white"}}>Arquivo:</label>
                         <input
                             type="file"
                             accept=".pdf"
@@ -211,7 +208,7 @@ const TarefaForm = () => {
                     <button type="submit" className="submit-button">Criar Tarefa</button>
                 </form>
 
-                <h2 className="subtitle">Tarefas Criadas</h2>
+                <h2 className="subtitle" style={{color:"white"}}>Tarefas Criadas</h2>
                 <div className="tarefas-list">
                     {tarefas.map((tarefa) => (
                         <div key={tarefa.id} className="tarefa-card">
@@ -224,7 +221,7 @@ const TarefaForm = () => {
                                 {alunos
                                     .filter(aluno => !tarefa.alunos.some(assocAluno => assocAluno.id === aluno.id))
                                     .map((aluno) => (
-                                        <li key={aluno.id} className="aluno-item">
+                                        <li key={aluno.id} className="aluno-item" style={{color:"white"}}>
                                             {aluno.nome}
                                             <button
                                                 className="associar-button"
@@ -241,7 +238,7 @@ const TarefaForm = () => {
                                 <h4 className="alunos-title">Alunos Associados:</h4>
                                 <ul>
                                     {tarefa.alunos.map((aluno) => (
-                                        <li key={aluno.id} className="aluno-item">
+                                        <li key={aluno.id} className="aluno-item" style={{color:"white"}}>
                                             {aluno.nome}
                                             <button onClick={() => handleRemoverAluno(tarefa.id, aluno.id)} className="associar-button-delete">
                                                 Remover Aluno

@@ -4,7 +4,6 @@
     display: flex;
     min-height: 100vh;
     background-color: #f4f7f6;
-    font-family: 'Roboto', sans-serif; /* Fonte moderna */
 }
 
 .main-content {

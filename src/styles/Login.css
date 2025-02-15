@@ -1,6 +1,6 @@
 /* Estilo do contêiner de login */
 .login-container {
-    background-image: url(../media/Imagem-back-login.png);
+    background-image: url(../media/BostonView.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -56,7 +56,7 @@
   .btn-login {
     width: 100%;
     padding: 12px;
-    background: #e03939;
+    background: #0c3245;
     color: #fff;
     border: none;
     border-radius: 25px;
@@ -66,7 +66,7 @@
   }
   
   .btn-login:hover {
-    background: #a02904;
+    background: #092f42;
   }
   .error-message {
     color: red;
