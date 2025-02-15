@@ -102,7 +102,7 @@ const AlunoTarefas = () => {
                     {tarefas.map((tarefa) => (
                         <div key={tarefa.id} className="tarefa-card">
                             <h2>{tarefa.titulo}</h2>
-                            <p>{tarefa.descricao}</p>
+                            <p style={{whiteSpace: "pre-wrap"}}>{tarefa.descricao}</p>
                             {tarefa.arquivo && (
                                 <a href={tarefa.arquivo} download target="_blank" rel="noopener noreferrer" className="download-button">
                                     📥 Download File
