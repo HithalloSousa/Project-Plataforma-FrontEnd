@@ -53,6 +53,7 @@ const ProfessorMateriais = () => {
     // Limpa os campos do formulário
     const limparCampos = () => {
         setCategoriaSelecionada("");
+        setTitulo("");
         setConteudo("");
         setArquivo(null);
     };
