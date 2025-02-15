@@ -3,12 +3,14 @@ import SidebarNewAluno from "../../components/SideBarNewAluno";
 import "../../styles/aluno/AlunoMateriais.css";
 import axios from "axios";
 import API_BASE_URL from "../../config";
-import { FaFileAlt, FaImage, FaLink, FaHome } from "react-icons/fa"; // Ícones para melhor visualização
+import { FaFileAlt, FaImage, FaLink, FaHome } from "react-icons/fa";
 
 const AlunoMateriais = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [materiais, setMateriais] = useState([]);
     const [tipoSelecionado, setTipoSelecionado] = useState("inicio");
+    const [imagemModalAberta, setImagemModalAberta] = useState(false);
+    const [imagemSelecionada, setImagemSelecionada] = useState("");
 
     const fetchMateriais = async () => {
         try {
@@ -26,6 +28,17 @@ const AlunoMateriais = () => {
     const materiaisFiltrados = materiais.filter((material) => 
         tipoSelecionado !== "inicio" && material.categoria.tipo === tipoSelecionado
     );
+
+    const abrirImagemModal = (imagemUrl) => {
+        setImagemSelecionada(imagemUrl);
+        setImagemModalAberta(true);
+    };
+
+    const fecharImagemModal = () => {
+        setImagemModalAberta(false);
+        setImagemSelecionada("");
+    };
+
 
     return (
         <div className="aluno-layout">
@@ -62,7 +75,7 @@ const AlunoMateriais = () => {
                                             src={material.chart.startsWith("http") ? material.chart : `https://res.cloudinary.com/dxy12ffx0/${material.chart}`}
                                             alt="Chart"
                                             className="chart-image"
-                                            onError={(e) => (e.target.style.display = "none")}
+                                            onClick={() => abrirImagemModal(material.chart.startsWith("http") ? material.chart : `https://res.cloudinary.com/dxy12ffx0/${material.chart}`)}
                                         />
                                     )}
 
@@ -82,6 +95,13 @@ const AlunoMateriais = () => {
                                 <p>Não há materiais disponíveis para a categoria "{tipoSelecionado}".</p>
                             </div>
                         )}
+                    </div>
+                )}
+
+                {/* Modal de Imagem */}
+                {imagemModalAberta && (
+                    <div className="modal-imagem" onClick={fecharImagemModal}>
+                        <img src={imagemSelecionada} alt="Imagem em tamanho real" className="imagem-modal" />
                     </div>
                 )}
             </div>

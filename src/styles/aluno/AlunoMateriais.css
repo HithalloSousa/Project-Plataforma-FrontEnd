@@ -86,10 +86,12 @@ h1 {
 /* Estilo para charts */
 .materias-card img {
     width: 100%;
-    max-width: 500px;
-    height: auto;
+    height: 200px; /* Ajuste o tamanho conforme necessário */
+    object-fit: cover; /* Isso vai manter a proporção da imagem sem distorcer */
     border-radius: 8px;
+    cursor: pointer; /* Para indicar que a imagem é clicável */
 }
+
 
 /* Estilo para links */
 .materias-card a {
