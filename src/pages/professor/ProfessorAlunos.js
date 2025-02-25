@@ -17,7 +17,7 @@ const ProfessorAlunos = () => {
       const response = await axios.get(`${API_BASE_URL}/api/alunos/`);
       setAlunos(response.data);
     } catch (error) {
-      console.error("Erro ao buscar alunos:", error);
+      console.error("Erro ao buscar alunos no backend:", error);
     }
   };
 
